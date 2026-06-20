@@ -79,4 +79,22 @@ La frontière suit une règle simple : la librairie rend et émet des événemen
 - Changer le thème ne touche pas aux primitives.
 - Renommer le scope npm est mécanique avant publication.
 - Un pattern trop spécifique peut être retiré sans casser `ui-core`.
-- Record'air n'est pas encore consommateur de la librairie, donc aucun risque de régression produit pendant l'extraction.
+- La migration produit est progressive : chaque adaptateur local est supprimable dès que son contrat est couvert par le package.
+
+## Retours de la migration réelle
+
+Source de vérité des écarts observés lors de l'intégration npm dans Record'air.
+
+### À ajouter au design system
+
+| Écart | Comportement attendu | Impact actuel | Condition de migration |
+|---|---|---|---|
+| `Button` par rôle | Variante typée `artist`, `studio` ou `pro`, avec les gradients et ombres des tokens de rôle | `SignupForm` conserve le `Button` local | Ajouter un contrat public sans styles métier recopiés dans l'application |
+| `Toast` compatible actions React | Accepter un callback `onClose` tout en documentant la migration depuis `onCloseAction`, et conserver un libellé de fermeture accessible injecté | Les formulaires de profil et studio conservent le `Toast` local | Choisir un contrat stable puis fournir un adaptateur ou une migration mécanique |
+| Navigation `next-intl` | Permettre d'injecter un composant de lien ou une fonction de rendu dans les patterns navigants | `Logo` et `RolePickerCard` restent locaux pour préserver le préfixe de locale | Ajouter une API d'adaptation sans dépendre de Next.js ni de `next-intl` dans `ui-core` |
+
+### Résolu pendant la migration
+
+- Les icônes Lucide utilisent leur prop native `fill`, et non l'ancienne prop locale `filled`.
+- Les imports sont consolidés à une déclaration par package et par fichier.
+- Les sources Tailwind des packages npm sont déclarées explicitement dans le CSS consommateur.

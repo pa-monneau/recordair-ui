@@ -89,9 +89,10 @@ Source de vérité des écarts observés lors de l'intégration npm dans Record'
 
 | Écart | Comportement attendu | Impact actuel | Condition de migration |
 |---|---|---|---|
-| `Button` par rôle | Variante typée `artist`, `studio` ou `pro`, avec les gradients et ombres des tokens de rôle | Couvert dans la prochaine version de `ui-core` | Migrer `SignupForm`, puis supprimer le `Button` local |
-| `Toast` compatible actions React | Accepter un callback `onClose` tout en documentant la migration depuis `onCloseAction`, et conserver un libellé de fermeture accessible injecté | Les formulaires de profil et studio conservent le `Toast` local | Choisir un contrat stable puis fournir un adaptateur ou une migration mécanique |
-| Navigation `next-intl` | Permettre d'injecter un composant de lien dans les patterns navigants | Couvert par `as` et `linkComponent` dans la prochaine version | Migrer `Logo` et `RolePickerCard`, puis supprimer leurs copies locales |
+| `Button` par rôle | Variante typée `artist`, `studio` ou `pro`, avec les gradients et ombres des tokens de rôle | Résolu dans `ui-core@0.2.0` et migré dans Record'air | Aucun adaptateur local restant |
+| `Toast` accessible | Callback `onClose` et libellé de fermeture traduit obligatoire | Résolu avec le contrat existant et migré dans Record'air | Aucun adaptateur local restant |
+| Navigation `next-intl` | Permettre d'injecter un composant de lien dans les patterns navigants | `RecordairLogo` résolu avec `as` dans `ui-patterns@0.2.0` | Aucun adaptateur `Logo` local restant |
+| Interaction `RolePickerCard` | Conserver l'option où toute la carte est un lien, avec ses états hover et focus, sans lien imbriqué dans le CTA | Le package `0.2.0` ne rend cliquable que le CTA ; la carte locale reste nécessaire | Ajouter un mode d'interaction `card` avant de migrer le composant produit |
 
 ### Résolu pendant la migration
 

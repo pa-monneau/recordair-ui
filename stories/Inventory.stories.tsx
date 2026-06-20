@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Badge, Card, SearchInput } from "@recordair-ds/ui-core";
+import { Badge, Card, SearchInput } from "@recordair/ui-core";
 import { sourceComponents } from "./sourceInventory";
 import type { SourceComponentStatus } from "./sourceInventory";
 

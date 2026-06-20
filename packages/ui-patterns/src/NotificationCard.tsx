@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
-import { Card, IconBox, IconButton } from "@recordair-ds/ui-core";
-import { BellIcon, XIcon, type IconProps } from "@recordair-ds/ui-core/icons";
+import { Card, IconBox, IconButton } from "@recordair/ui-core";
+import { BellIcon, XIcon, type IconProps } from "@recordair/ui-core/icons";
 
 type NotificationCardData = {
   id: string;

@@ -14,9 +14,9 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@recordair-ds/ui-core": ["packages/ui-core/src/index.ts"],
-      "@recordair-ds/ui-core/*": ["packages/ui-core/src/*"],
-      "@recordair-ds/ui-patterns": ["packages/ui-patterns/src/index.ts"]
+      "@recordair/ui-core": ["packages/ui-core/src/index.ts"],
+      "@recordair/ui-core/*": ["packages/ui-core/src/*"],
+      "@recordair/ui-patterns": ["packages/ui-patterns/src/index.ts"]
     }
   },
   "include": ["packages/**/*.ts", "packages/**/*.tsx", "stories/**/*.ts", "stories/**/*.tsx", ".storybook/**/*.ts"]

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Card } from "@recordair-ds/ui-core";
+import { Card } from "@recordair/ui-core";
 import {
   KpiCard,
   SectionHeader,
   SummaryLine,
   TrendChip,
-} from "@recordair-ds/ui-patterns";
+} from "@recordair/ui-patterns";
 
 const DashboardOverview = () => (
   <div className="grid w-full max-w-5xl gap-6">
@@ -46,8 +46,8 @@ const Overview: Story = {
   parameters: {
     docs: {
       source: {
-        code: `import { Card } from "@recordair-ds/ui-core";
-import { KpiCard, SectionHeader, SummaryLine, TrendChip } from "@recordair-ds/ui-patterns";
+        code: `import { Card } from "@recordair/ui-core";
+import { KpiCard, SectionHeader, SummaryLine, TrendChip } from "@recordair/ui-patterns";
 
 export const Dashboard = () => (
   <div className="grid gap-6">

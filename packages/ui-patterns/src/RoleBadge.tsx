@@ -1,11 +1,11 @@
 import type { ReactNode } from "react";
-import { Badge } from "@recordair-ds/ui-core";
+import { Badge } from "@recordair/ui-core";
 import {
   AudioLinesIcon,
   HeadphonesIcon,
   MicIcon,
   type IconProps,
-} from "@recordair-ds/ui-core/icons";
+} from "@recordair/ui-core/icons";
 
 type Role = "artist" | "studio" | "pro";
 

@@ -1,4 +1,4 @@
-import { Avatar, RatingStars } from "@recordair-ds/ui-core";
+import { Avatar, RatingStars } from "@recordair/ui-core";
 import { RecordairLogo } from "./RecordairLogo";
 
 type AuthTestimonial = {

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
-import { NavigationList } from "@recordair-ds/ui-core";
-import type { NavigationListItem } from "@recordair-ds/ui-core";
-import { MenuIcon } from "@recordair-ds/ui-core/icons";
+import { NavigationList } from "@recordair/ui-core";
+import type { NavigationListItem } from "@recordair/ui-core";
+import { MenuIcon } from "@recordair/ui-core/icons";
 
 type MobileNavigationProps = {
   items: readonly NavigationListItem[];

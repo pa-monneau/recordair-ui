@@ -2,8 +2,8 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   EllipsisIcon,
-} from "@recordair-ds/ui-core/icons";
-import { LinkButton } from "@recordair-ds/ui-core";
+} from "@recordair/ui-core/icons";
+import { LinkButton } from "@recordair/ui-core";
 
 type PaginationLabels = {
   navigation: string;

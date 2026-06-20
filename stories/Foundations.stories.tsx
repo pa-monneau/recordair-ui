@@ -92,7 +92,7 @@ const Overview: Story = {
     docs: {
       source: {
         code: `@import "tailwindcss";
-@import "@recordair-ds/theme-recordair";`,
+@import "@recordair/theme-recordair";`,
         language: "css",
       },
     },

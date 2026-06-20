@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { ChoiceChip, KeyValue } from "@recordair-ds/ui-core";
-import { CircleHelpIcon } from "@recordair-ds/ui-core/icons";
+import { ChoiceChip, KeyValue } from "@recordair/ui-core";
+import { CircleHelpIcon } from "@recordair/ui-core/icons";
 import {
   BookingField as BookingFieldComponent,
   DetailCard as DetailCardComponent,
@@ -8,7 +8,7 @@ import {
   ErrorState as ErrorStateComponent,
   FormCard as FormCardComponent,
   Metric as MetricComponent,
-} from "@recordair-ds/ui-patterns";
+} from "@recordair/ui-patterns";
 
 const ContentPatternsCatalog = () => (
   <div className="grid w-full max-w-5xl gap-8 lg:grid-cols-2">
@@ -48,8 +48,8 @@ const Catalog: Story = {
   parameters: {
     docs: {
       source: {
-        code: `import { KeyValue } from "@recordair-ds/ui-core";
-import { BookingField, DetailCard, EmbeddedBookingCard, FormCard, Metric } from "@recordair-ds/ui-patterns";`,
+        code: `import { KeyValue } from "@recordair/ui-core";
+import { BookingField, DetailCard, EmbeddedBookingCard, FormCard, Metric } from "@recordair/ui-patterns";`,
       },
     },
   },

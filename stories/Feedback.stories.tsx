@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Alert, Button, Modal, Skeleton, Spinner, Toast } from "@recordair-ds/ui-core";
+import { Alert, Button, Modal, Skeleton, Spinner, Toast } from "@recordair/ui-core";
 
 const FeedbackCatalog = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -87,7 +87,7 @@ const Interactive: Story = {
     docs: {
       source: {
         code: `import { useState } from "react";
-import { Alert, Button, Modal, Skeleton, Spinner, Toast } from "@recordair-ds/ui-core";
+import { Alert, Button, Modal, Skeleton, Spinner, Toast } from "@recordair/ui-core";
 
 export const FeedbackExample = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -129,7 +129,7 @@ const ModalStory: Story = {
     docs: {
       source: {
         code: `import { useState } from "react";
-import { Button, Modal } from "@recordair-ds/ui-core";
+import { Button, Modal } from "@recordair/ui-core";
 
 export const ConfirmationModal = () => {
   const [open, setOpen] = useState(false);

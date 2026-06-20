@@ -4,7 +4,7 @@ import {
   ContentBlock as ContentBlockComponent,
   KeyValue as KeyValueComponent,
   RatingStars as RatingStarsComponent,
-} from "@recordair-ds/ui-core";
+} from "@recordair/ui-core";
 
 const accordionItems = [
   { id: "booking", title: "Comment fonctionne la réservation ?", content: "Choisis un créneau, confirme les informations puis règle en ligne." },
@@ -36,7 +36,7 @@ const Catalog: Story = {
   parameters: {
     docs: {
       source: {
-        code: `import { Accordion, ContentBlock, KeyValue, RatingStars } from "@recordair-ds/ui-core";`,
+        code: `import { Accordion, ContentBlock, KeyValue, RatingStars } from "@recordair/ui-core";`,
       },
     },
   },

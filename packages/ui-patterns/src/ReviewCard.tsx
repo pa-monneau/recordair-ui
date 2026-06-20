@@ -1,5 +1,5 @@
-import { StarIcon } from "@recordair-ds/ui-core/icons";
-import { Avatar, Card } from "@recordair-ds/ui-core";
+import { StarIcon } from "@recordair/ui-core/icons";
+import { Avatar, Card } from "@recordair/ui-core";
 
 type ReviewCardData = {
   authorName: string;

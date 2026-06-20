@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Button, IconButton, LinkTabs, NavigationList } from "@recordair-ds/ui-core";
-import { BellIcon, CalendarDaysIcon, HouseIcon, SettingsIcon, UserIcon } from "@recordair-ds/ui-core/icons";
+import { Button, IconButton, LinkTabs, NavigationList } from "@recordair/ui-core";
+import { BellIcon, CalendarDaysIcon, HouseIcon, SettingsIcon, UserIcon } from "@recordair/ui-core/icons";
 import {
   AuthVisualPanel as AuthVisualPanelComponent,
   MobileNavigation as MobileNavigationComponent,
   PageHeader as PageHeaderComponent,
   RecordairLogo,
   SiteHeader as SiteHeaderComponent,
-} from "@recordair-ds/ui-patterns";
+} from "@recordair/ui-patterns";
 
 const headerTabs = [
   { href: "/studios/42", label: "Aperçu" },
@@ -55,8 +55,8 @@ const Catalog: Story = {
   parameters: {
     docs: {
       source: {
-        code: `import { LinkTabs } from "@recordair-ds/ui-core";
-import { PageHeader, RecordairLogo, SiteHeader } from "@recordair-ds/ui-patterns";`,
+        code: `import { LinkTabs } from "@recordair/ui-core";
+import { PageHeader, RecordairLogo, SiteHeader } from "@recordair/ui-patterns";`,
       },
     },
   },

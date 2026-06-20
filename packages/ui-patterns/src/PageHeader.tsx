@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { ArrowLeftIcon, ArrowRightIcon } from "@recordair-ds/ui-core/icons";
+import { ArrowLeftIcon, ArrowRightIcon } from "@recordair/ui-core/icons";
 
 type PageHeaderLink = {
   label: string;

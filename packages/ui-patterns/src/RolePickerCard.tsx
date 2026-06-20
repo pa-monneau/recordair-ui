@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
-import { Card, CardContent, CardTitle, IconBox, LinkButton } from "@recordair-ds/ui-core";
-import { ArrowRightIcon, type IconProps } from "@recordair-ds/ui-core/icons";
+import { Card, CardContent, CardTitle, IconBox, LinkButton } from "@recordair/ui-core";
+import { ArrowRightIcon, type IconProps } from "@recordair/ui-core/icons";
 import type { Role } from "./RoleBadge";
 
 type RolePickerCardProps = {

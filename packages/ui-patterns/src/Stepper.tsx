@@ -1,4 +1,4 @@
-import { CheckIcon } from "@recordair-ds/ui-core/icons";
+import { CheckIcon } from "@recordair/ui-core/icons";
 
 type Step = {
   id: string;

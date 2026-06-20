@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Card, Input } from "@recordair-ds/ui-core";
-import { MicIcon } from "@recordair-ds/ui-core/icons";
+import { Card, Input } from "@recordair/ui-core";
+import { MicIcon } from "@recordair/ui-core/icons";
 import {
   BookingChip,
   BookingCard,
@@ -20,7 +20,7 @@ import {
   StudioCard,
   SummaryLine,
   TrendChip,
-} from "@recordair-ds/ui-patterns";
+} from "@recordair/ui-patterns";
 
 const PatternsOverview = () => (
   <div className="grid w-full max-w-5xl gap-8">
@@ -70,8 +70,8 @@ const Overview: Story = {
   parameters: {
     docs: {
       source: {
-        code: `import { Input } from "@recordair-ds/ui-core";
-import { MicIcon } from "@recordair-ds/ui-core/icons";
+        code: `import { Input } from "@recordair/ui-core";
+import { MicIcon } from "@recordair/ui-core/icons";
 import {
   BookingChip,
   FormRow,
@@ -80,7 +80,7 @@ import {
   RoleBadge,
   RolePickerCard,
   StatusPill,
-} from "@recordair-ds/ui-patterns";
+} from "@recordair/ui-patterns";
 
 export const RecordairPatterns = () => (
   <div className="grid gap-8">

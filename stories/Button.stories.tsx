@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Button, ButtonGroup, IconButton, LinkButton, SubmitButton } from "@recordair-ds/ui-core";
-import { ArrowRightIcon, HeartIcon, SaveIcon } from "@recordair-ds/ui-core/icons";
+import { Button, ButtonGroup, IconButton, LinkButton, SubmitButton } from "@recordair/ui-core";
+import { ArrowRightIcon, HeartIcon, SaveIcon } from "@recordair/ui-core/icons";
 
 const ButtonCatalog = () => (
   <div className="flex max-w-2xl flex-col gap-6">

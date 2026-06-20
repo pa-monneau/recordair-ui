@@ -1,6 +1,7 @@
 {
-  "name": "@recordair-ds/theme-recordair",
+  "name": "@recordair/theme-recordair",
   "version": "0.1.0",
+  "author": "Pierre-Alexandre Monneau",
   "description": "Tokens Tailwind CSS v4 du thème Record'air.",
   "sideEffects": ["**/*.css"],
   "files": ["src/theme.css"],
@@ -16,5 +17,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "license": "UNLICENSED"
+  "license": "SEE LICENSE IN LICENSE"
 }

@@ -7,7 +7,7 @@ import {
   ReviewCard,
   Stepper,
   StudioCard,
-} from "@recordair-ds/ui-patterns";
+} from "@recordair/ui-patterns";
 
 const MarketplaceOverview = () => {
   const [notificationVisible, setNotificationVisible] = useState(true);
@@ -112,7 +112,7 @@ const Overview: Story = {
     docs: {
       source: {
         code: `import { useState } from "react";
-import { NotificationCard, Pagination, StudioCard } from "@recordair-ds/ui-patterns";
+import { NotificationCard, Pagination, StudioCard } from "@recordair/ui-patterns";
 
 export const Marketplace = () => {
   const [notificationVisible, setNotificationVisible] = useState(true);

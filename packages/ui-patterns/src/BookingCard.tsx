@@ -1,5 +1,5 @@
-import { AudioLinesIcon, ClockIcon } from "@recordair-ds/ui-core/icons";
-import { Badge, Card, IconBox, LinkButton } from "@recordair-ds/ui-core";
+import { AudioLinesIcon, ClockIcon } from "@recordair/ui-core/icons";
+import { Badge, Card, IconBox, LinkButton } from "@recordair/ui-core";
 
 type BookingStatus =
   | "confirmed"

@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, LinkButton } from "@recordair-ds/ui-core";
+import { Card, CardContent, CardMedia, LinkButton } from "@recordair/ui-core";
 
 type EmbeddedBookingCardProps = {
   mediaUrl?: string;

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Button, LinkButton } from "@recordair-ds/ui-core";
+import { Button, LinkButton } from "@recordair/ui-core";
 
 type ErrorStateTone = "brand" | "error" | "warning";
 

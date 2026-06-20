@@ -45,4 +45,4 @@ const KpiCard = ({
 
 export { KpiCard };
 export type { KpiCardProps };
-import { Card } from "@recordair-ds/ui-core";
+import { Card } from "@recordair/ui-core";

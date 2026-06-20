@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Button, ChoiceChip, EmptyState, IconBox, Progress, Tabs } from "@recordair-ds/ui-core";
-import { CalendarDaysIcon, MicIcon, SearchIcon } from "@recordair-ds/ui-core/icons";
+import { Button, ChoiceChip, EmptyState, IconBox, Progress, Tabs } from "@recordair/ui-core";
+import { CalendarDaysIcon, MicIcon, SearchIcon } from "@recordair/ui-core/icons";
 
 const tabItems = [
   { id: "upcoming", label: "À venir" },
@@ -44,8 +44,8 @@ const Catalog: Story = {
     docs: {
       source: {
         code: `import { useState } from "react";
-import { Button, ChoiceChip, EmptyState, IconBox, Progress, Tabs } from "@recordair-ds/ui-core";
-import { MicIcon, SearchIcon } from "@recordair-ds/ui-core/icons";
+import { Button, ChoiceChip, EmptyState, IconBox, Progress, Tabs } from "@recordair/ui-core";
+import { MicIcon, SearchIcon } from "@recordair/ui-core/icons";
 
 export const BookingNavigation = () => {
   const [activeTab, setActiveTab] = useState("upcoming");

@@ -11,8 +11,8 @@ import {
   CardMedia,
   CardTitle,
   IconBox,
-} from "@recordair-ds/ui-core";
-import { AudioLinesIcon, StarIcon } from "@recordair-ds/ui-core/icons";
+} from "@recordair/ui-core";
+import { AudioLinesIcon, StarIcon } from "@recordair/ui-core/icons";
 
 const CardsCatalog = () => (
   <div className="grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -65,7 +65,7 @@ const Catalog: Story = {
   CardHeader,
   CardMedia,
   CardTitle,
-} from "@recordair-ds/ui-core";
+} from "@recordair/ui-core";
 
 export const StudioCard = () => (
   <Card variant="interactive" padding="none">

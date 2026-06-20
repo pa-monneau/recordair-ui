@@ -22,4 +22,4 @@ const SectionHeader = ({ title, actionLabel, actionHref }: SectionHeaderProps) =
 
 export { SectionHeader };
 export type { SectionHeaderProps };
-import { LinkButton } from "@recordair-ds/ui-core";
+import { LinkButton } from "@recordair/ui-core";

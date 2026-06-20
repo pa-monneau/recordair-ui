@@ -2,11 +2,13 @@
 
 Librairie React/TypeScript extraite de l'interface Record'air. Le repo produit reste une source en lecture seule : aucun fichier Record'air n'est importé au runtime et aucun chemin `@/`, service, action, route Next.js ou traduction applicative ne fuit dans les packages.
 
+Licence propriétaire, tous droits réservés. La publication publique sur npm ne confère aucun droit d'utilisation, de copie, de modification ou de redistribution sans autorisation écrite préalable.
+
 ## Architecture
 
-- `@recordair-ds/ui-core` : primitives accessibles et icônes, indépendantes de la marque.
-- `@recordair-ds/theme-recordair` : tokens Record'air pour Tailwind CSS v4.
-- `@recordair-ds/ui-patterns` : patterns visuels Record'air alimentés par props.
+- `@recordair/ui-core` : primitives accessibles et icônes, indépendantes de la marque.
+- `@recordair/theme-recordair` : tokens Record'air pour Tailwind CSS v4.
+- `@recordair/ui-patterns` : patterns visuels Record'air alimentés par props.
 - Storybook : documentation, états interactifs et contrôle d'accessibilité.
 
 ## Catalogue
@@ -21,26 +23,26 @@ Le Storybook liste chaque export public dans sa famille. L’entrée `Docs` de c
 
 Références : [catalogue complet](./docs/COMPONENT_CATALOG.md) et [standard de documentation](./docs/DOCUMENTATION_STANDARD.md).
 
-Le scope npm `@recordair-ds` est provisoire. Le renommer avant la première publication est une opération mécanique et réversible.
+Le scope npm public est `@recordair`, rattaché à l’organisation npm Record'air.
 
 ## Installation dans un projet
 
 ```bash
-npm install @recordair-ds/ui-core @recordair-ds/ui-patterns @recordair-ds/theme-recordair tailwindcss
+npm install @recordair/ui-core @recordair/ui-patterns @recordair/theme-recordair tailwindcss
 ```
 
 Dans la feuille CSS globale Tailwind v4 :
 
 ```css
 @import "tailwindcss";
-@import "@recordair-ds/theme-recordair";
+@import "@recordair/theme-recordair";
 ```
 
 Le thème déclare lui-même les dossiers compilés des deux packages avec `@source`. Le projet consommateur n'a pas à safelister les classes.
 
 ```tsx
-import { Button, Card, CardContent, CardHeader, CardTitle, Field, Input } from "@recordair-ds/ui-core";
-import { ProfileSectionCard } from "@recordair-ds/ui-patterns";
+import { Button, Card, CardContent, CardHeader, CardTitle, Field, Input } from "@recordair/ui-core";
+import { ProfileSectionCard } from "@recordair/ui-patterns";
 
 const Example = () => (
   <ProfileSectionCard title="Profil" subtitle="Informations publiques">

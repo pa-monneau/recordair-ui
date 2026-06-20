@@ -1,5 +1,5 @@
-import { ArrowDownIcon, ArrowRightIcon, ArrowUpIcon } from "@recordair-ds/ui-core/icons";
-import { Badge } from "@recordair-ds/ui-core";
+import { ArrowDownIcon, ArrowRightIcon, ArrowUpIcon } from "@recordair/ui-core/icons";
+import { Badge } from "@recordair/ui-core";
 
 type TrendDirection = "up" | "down" | "neutral";
 

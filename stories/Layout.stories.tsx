@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Divider } from "@recordair-ds/ui-core";
+import { Divider } from "@recordair/ui-core";
 
 const LayoutCatalog = () => (
   <div className="w-96 space-y-4">
@@ -22,7 +22,7 @@ const DividerStory: Story = {
   parameters: {
     docs: {
       source: {
-        code: `import { Divider } from "@recordair-ds/ui-core";
+        code: `import { Divider } from "@recordair/ui-core";
 
 export const Section = () => (
   <div>

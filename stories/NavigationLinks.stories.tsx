@@ -5,8 +5,8 @@ import {
   MenuSelect as MenuSelectComponent,
   NavigationList as NavigationListComponent,
   ScrollAnchor as ScrollAnchorComponent,
-} from "@recordair-ds/ui-core";
-import { CalendarDaysIcon, HouseIcon, SettingsIcon, UserIcon } from "@recordair-ds/ui-core/icons";
+} from "@recordair/ui-core";
+import { CalendarDaysIcon, HouseIcon, SettingsIcon, UserIcon } from "@recordair/ui-core/icons";
 
 const navigationItems = [
   { href: "/dashboard", label: "Tableau de bord", leadingIcon: <HouseIcon className="size-5" />, exact: true },
@@ -53,7 +53,7 @@ const Catalog: Story = {
   parameters: {
     docs: {
       source: {
-        code: `import { LinkTabs, MenuSelect, NavigationList } from "@recordair-ds/ui-core";`,
+        code: `import { LinkTabs, MenuSelect, NavigationList } from "@recordair/ui-core";`,
       },
     },
   },

@@ -1,10 +1,10 @@
-# @recordair-ds/ui-patterns
+# @recordair/ui-patterns
 
-Assemblages métier réutilisables construits exclusivement avec `@recordair-ds/ui-core`.
+Assemblages métier réutilisables construits exclusivement avec `@recordair/ui-core`.
 
 ```tsx
-import { KeyValue } from "@recordair-ds/ui-core";
-import { DetailCard } from "@recordair-ds/ui-patterns";
+import { KeyValue } from "@recordair/ui-core";
+import { DetailCard } from "@recordair/ui-patterns";
 
 const BookingDetails = () => (
   <DetailCard title="Réservation">

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Avatar, Badge, IconBox } from "@recordair-ds/ui-core";
-import { AudioLinesIcon } from "@recordair-ds/ui-core/icons";
+import { Avatar, Badge, IconBox } from "@recordair/ui-core";
+import { AudioLinesIcon } from "@recordair/ui-core/icons";
 
 const IdentityCatalog = () => (
   <div className="flex flex-wrap items-center gap-6">
@@ -22,8 +22,8 @@ const Catalog: Story = {
   parameters: {
     docs: {
       source: {
-        code: `import { Avatar, Badge, IconBox } from "@recordair-ds/ui-core";
-import { AudioLinesIcon } from "@recordair-ds/ui-core/icons";
+        code: `import { Avatar, Badge, IconBox } from "@recordair/ui-core";
+import { AudioLinesIcon } from "@recordair/ui-core/icons";
 
 export const IdentityExample = () => (
   <div className="flex items-center gap-4">

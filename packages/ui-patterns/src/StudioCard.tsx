@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
-import { Badge, Card, CardContent, CardMedia, IconBox } from "@recordair-ds/ui-core";
-import { MicIcon, StarIcon, type IconProps } from "@recordair-ds/ui-core/icons";
+import { Badge, Card, CardContent, CardMedia, IconBox } from "@recordair/ui-core";
+import { MicIcon, StarIcon, type IconProps } from "@recordair/ui-core/icons";
 
 type StudioCardGradient = "artist" | "studio" | "pro" | "brand";
 

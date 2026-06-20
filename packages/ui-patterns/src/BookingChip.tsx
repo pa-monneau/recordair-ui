@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
-import { ChoiceChip } from "@recordair-ds/ui-core";
+import { ChoiceChip } from "@recordair/ui-core";
 
 type BookingChipProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> & {
   active: boolean;

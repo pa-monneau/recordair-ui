@@ -9,8 +9,8 @@ import {
   Select,
   Textarea,
   Toggle,
-} from "@recordair-ds/ui-core";
-import { MailIcon } from "@recordair-ds/ui-core/icons";
+} from "@recordair/ui-core";
+import { MailIcon } from "@recordair/ui-core/icons";
 
 const FormControlsCatalog = () => (
   <form className="flex w-full max-w-lg flex-col gap-6 rounded-lg border border-neutral-200 bg-neutral-0 p-8">
@@ -72,8 +72,8 @@ const Catalog: Story = {
   Select,
   Textarea,
   Toggle,
-} from "@recordair-ds/ui-core";
-import { MailIcon } from "@recordair-ds/ui-core/icons";
+} from "@recordair/ui-core";
+import { MailIcon } from "@recordair/ui-core/icons";
 
 export const StudioForm = () => (
   <form className="flex flex-col gap-6">

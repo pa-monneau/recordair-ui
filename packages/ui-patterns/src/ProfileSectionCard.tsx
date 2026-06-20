@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@recordair-ds/ui-core";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@recordair/ui-core";
 
 type ProfileSectionCardProps = {
   title: string;

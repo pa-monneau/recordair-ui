@@ -1,6 +1,7 @@
 {
-  "name": "@recordair-ds/ui-patterns",
+  "name": "@recordair/ui-patterns",
   "version": "0.1.0",
+  "author": "Pierre-Alexandre Monneau",
   "description": "Patterns métier découplés issus de l'interface Record'air.",
   "type": "module",
   "files": ["dist"],
@@ -15,14 +16,12 @@
   "scripts": {
     "build": "tsc -p tsconfig.json"
   },
-  "dependencies": {
-    "@recordair-ds/ui-core": "0.1.0"
-  },
   "peerDependencies": {
+    "@recordair/ui-core": "0.1.0",
     "react": ">=18.2.0"
   },
   "publishConfig": {
     "access": "public"
   },
-  "license": "UNLICENSED"
+  "license": "SEE LICENSE IN LICENSE"
 }

@@ -11,4 +11,4 @@ const StatusPill = ({ label, tone = "neutral" }: StatusPillProps) => (
 
 export { StatusPill };
 export type { StatusPillProps, StatusTone };
-import { Badge } from "@recordair-ds/ui-core";
+import { Badge } from "@recordair/ui-core";

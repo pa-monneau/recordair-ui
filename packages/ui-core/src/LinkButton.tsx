@@ -1,8 +1,9 @@
-import type { AnchorHTMLAttributes, ReactNode } from "react";
+import type { AnchorHTMLAttributes, ElementType, ReactNode } from "react";
 import { buttonClassName } from "./buttonStyles";
 import type { ButtonShape, ButtonSize, ButtonVariant } from "./buttonStyles";
 
 type LinkButtonProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  as?: ElementType;
   variant?: ButtonVariant;
   size?: ButtonSize;
   shape?: ButtonShape;
@@ -12,6 +13,7 @@ type LinkButtonProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 };
 
 const LinkButton = ({
+  as: LinkComponent = "a",
   variant = "primary",
   size = "md",
   shape = "default",
@@ -22,14 +24,14 @@ const LinkButton = ({
   children,
   ...rest
 }: LinkButtonProps) => (
-  <a
+  <LinkComponent
     className={buttonClassName({ variant, size, shape, block, className })}
     {...rest}
   >
     {leadingIcon}
     {children}
     {trailingIcon}
-  </a>
+  </LinkComponent>
 );
 
 export { LinkButton };

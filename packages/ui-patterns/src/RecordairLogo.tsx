@@ -1,9 +1,13 @@
-import type { AnchorHTMLAttributes } from "react";
+import type { AnchorHTMLAttributes, ElementType } from "react";
 import { RecordairMark } from "./RecordairMark";
 
 type RecordairLogoSize = "sm" | "md" | "lg";
 
-type RecordairLogoProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "children"> & {
+type RecordairLogoProps = Omit<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
+  "children"
+> & {
+  as?: ElementType;
   href?: string;
   size?: RecordairLogoSize;
   inverted?: boolean;
@@ -17,6 +21,7 @@ const sizeClasses: Record<RecordairLogoSize, { mark: string; text: string }> = {
 };
 
 const RecordairLogo = ({
+  as: LinkComponent = "a",
   href,
   size = "md",
   inverted = false,
@@ -39,16 +44,18 @@ const RecordairLogo = ({
       </span>
     </>
   );
-  const rootClassName = ["inline-flex items-center gap-2", className].filter(Boolean).join(" ");
+  const rootClassName = ["inline-flex items-center gap-2", className]
+    .filter(Boolean)
+    .join(" ");
 
   if (!href) {
     return <span className={rootClassName}>{content}</span>;
   }
 
   return (
-    <a href={href} className={rootClassName} {...rest}>
+    <LinkComponent href={href} className={rootClassName} {...rest}>
       {content}
-    </a>
+    </LinkComponent>
   );
 };
 

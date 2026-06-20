@@ -12,6 +12,11 @@ const ButtonCatalog = () => (
       <Button variant="danger">Danger</Button>
     </div>
     <div className="flex flex-wrap items-center gap-3">
+      <Button variant="artist">Artiste</Button>
+      <Button variant="studio">Studio</Button>
+      <Button variant="pro">Pro</Button>
+    </div>
+    <div className="flex flex-wrap items-center gap-3">
       <Button size="sm" leadingIcon={<SaveIcon className="size-4" />}>Petit</Button>
       <Button trailingIcon={<ArrowRightIcon className="size-4" />}>Moyen</Button>
       <Button size="lg" shape="pill">Grand pill</Button>
@@ -58,6 +63,16 @@ const Danger: Story = {
     variant: "danger",
     children: "Supprimer",
   },
+};
+
+const RoleVariants: Story = {
+  render: () => (
+    <div className="flex flex-wrap gap-3">
+      <Button variant="artist">Continuer comme artiste</Button>
+      <Button variant="studio">Continuer comme studio</Button>
+      <Button variant="pro">Continuer comme pro</Button>
+    </div>
+  ),
 };
 
 const WithIcons: Story = {
@@ -107,6 +122,7 @@ export {
   LinkButtonStory,
   Loading,
   Primary,
+  RoleVariants,
   Secondary,
   SubmitButtonStory,
   WithIcons,

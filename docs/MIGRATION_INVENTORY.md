@@ -89,9 +89,9 @@ Source de vérité des écarts observés lors de l'intégration npm dans Record'
 
 | Écart | Comportement attendu | Impact actuel | Condition de migration |
 |---|---|---|---|
-| `Button` par rôle | Variante typée `artist`, `studio` ou `pro`, avec les gradients et ombres des tokens de rôle | `SignupForm` conserve le `Button` local | Ajouter un contrat public sans styles métier recopiés dans l'application |
+| `Button` par rôle | Variante typée `artist`, `studio` ou `pro`, avec les gradients et ombres des tokens de rôle | Couvert dans la prochaine version de `ui-core` | Migrer `SignupForm`, puis supprimer le `Button` local |
 | `Toast` compatible actions React | Accepter un callback `onClose` tout en documentant la migration depuis `onCloseAction`, et conserver un libellé de fermeture accessible injecté | Les formulaires de profil et studio conservent le `Toast` local | Choisir un contrat stable puis fournir un adaptateur ou une migration mécanique |
-| Navigation `next-intl` | Permettre d'injecter un composant de lien ou une fonction de rendu dans les patterns navigants | `Logo` et `RolePickerCard` restent locaux pour préserver le préfixe de locale | Ajouter une API d'adaptation sans dépendre de Next.js ni de `next-intl` dans `ui-core` |
+| Navigation `next-intl` | Permettre d'injecter un composant de lien dans les patterns navigants | Couvert par `as` et `linkComponent` dans la prochaine version | Migrer `Logo` et `RolePickerCard`, puis supprimer leurs copies locales |
 
 ### Résolu pendant la migration
 

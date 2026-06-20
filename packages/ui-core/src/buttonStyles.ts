@@ -1,6 +1,14 @@
 import { classNames } from "./classNames";
 
-type ButtonVariant = "primary" | "secondary" | "ghost" | "soft" | "danger";
+type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "ghost"
+  | "soft"
+  | "danger"
+  | "artist"
+  | "studio"
+  | "pro";
 type ButtonSize = "sm" | "md" | "lg";
 type ButtonShape = "default" | "pill";
 
@@ -26,6 +34,12 @@ const variantClasses: Record<ButtonVariant, string> = {
   ghost: "bg-transparent text-neutral-700 hover:bg-neutral-100",
   soft: "bg-role-studio-bg text-role-studio-text hover:brightness-95",
   danger: "bg-error text-neutral-0 hover:brightness-95",
+  artist:
+    "bg-gradient-to-r from-role-artist-from to-role-artist-to text-neutral-0 shadow-lg shadow-role-artist-to/30 hover:brightness-110",
+  studio:
+    "bg-gradient-to-r from-role-studio-from to-role-studio-to text-neutral-0 shadow-lg shadow-role-studio-from/30 hover:brightness-110",
+  pro:
+    "bg-gradient-to-r from-role-pro-from to-role-pro-to text-neutral-0 shadow-lg shadow-role-pro-from/30 hover:brightness-110",
 };
 
 const buttonClassName = ({

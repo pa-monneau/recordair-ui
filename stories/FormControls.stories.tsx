@@ -58,7 +58,65 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const Default: Story = {};
+const Catalog: Story = {};
+
+const FieldStory: Story = {
+  name: "Field",
+  render: () => (
+    <div className="w-96"><Field label="Nom public" htmlFor="field-demo" hint="Visible sur ton profil."><Input id="field-demo" /></Field></div>
+  ),
+};
+
+const InputStory: Story = {
+  name: "Input",
+  render: () => <div className="w-96"><Input aria-label="Adresse email" placeholder="artiste@recordair.com" leadingIcon={<MailIcon aria-hidden className="size-4" />} /></div>,
+};
+
+const SearchInputStory: Story = {
+  name: "SearchInput",
+  render: () => <div className="w-96"><SearchInput aria-label="Rechercher un studio" placeholder="Studio, ville ou équipement" /></div>,
+};
+
+const TextareaStory: Story = {
+  name: "Textarea",
+  render: () => <div className="w-96"><Textarea aria-label="Description" placeholder="Décris ton projet" /></div>,
+};
+
+const SelectStory: Story = {
+  name: "Select",
+  render: () => <div className="w-96"><Select aria-label="Ville" options={["Lille", "Lyon", "Marseille", "Paris"]} /></div>,
+};
+
+const NativeSelectStory: Story = {
+  name: "NativeSelect",
+  render: () => <div className="w-96"><NativeSelect aria-label="Type de studio"><option>Enregistrement</option><option>Répétition</option></NativeSelect></div>,
+};
+
+const CheckboxStory: Story = {
+  name: "Checkbox",
+  render: () => <label className="flex items-center gap-3 text-sm"><Checkbox defaultChecked />Conditions acceptées</label>,
+};
+
+const RadioStory: Story = {
+  name: "Radio",
+  render: () => <Radio name="format" label="Session studio" description="Réservation avec ingénieur son" defaultChecked />,
+};
+
+const ToggleStory: Story = {
+  name: "Toggle",
+  render: () => <Toggle ariaLabel="Activer les notifications" defaultChecked />,
+};
 
 export default meta;
-export { Default };
+export {
+  Catalog,
+  CheckboxStory,
+  FieldStory,
+  InputStory,
+  NativeSelectStory,
+  RadioStory,
+  SearchInputStory,
+  SelectStory,
+  TextareaStory,
+  ToggleStory,
+};

@@ -2,7 +2,16 @@ import type { Preview } from "@storybook/react-vite";
 import "../stories/storybook.css";
 
 const preview: Preview = {
+  tags: ["autodocs"],
   parameters: {
+    docs: {
+      canvas: {
+        sourceState: "shown",
+      },
+      source: {
+        type: "dynamic",
+      },
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

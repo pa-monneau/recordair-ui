@@ -153,3 +153,5 @@ packages/ui-core/src/icons/*.js
 packages/ui-core/src/icons/*.js.map
 packages/ui-core/src/icons/*.d.ts
 packages/ui-core/src/icons/*.d.ts.map
+
+AGENTS.md

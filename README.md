@@ -1,94 +1,244 @@
 # Record'air Design System
 
-Librairie React/TypeScript extraite de l'interface Record'air. Le repo produit reste une source en lecture seule : aucun fichier Record'air n'est importé au runtime et aucun chemin `@/`, service, action, route Next.js ou traduction applicative ne fuit dans les packages.
+Bibliothèque React/TypeScript extraite de l'interface Record'air et publiée sous le scope npm [`@recordair`](https://www.npmjs.com/org/recordair).
 
-Licence propriétaire, tous droits réservés. La publication publique sur npm ne confère aucun droit d'utilisation, de copie, de modification ou de redistribution sans autorisation écrite préalable.
-
-## Architecture
-
-- `@recordair/ui-core` : primitives accessibles et icônes, indépendantes de la marque.
+- `@recordair/ui-core` : primitives accessibles, formulaires, feedback, navigation et icônes.
+- `@recordair/ui-patterns` : assemblages réutilisables construits avec `ui-core`.
 - `@recordair/theme-recordair` : tokens Record'air pour Tailwind CSS v4.
-- `@recordair/ui-patterns` : patterns visuels Record'air alimentés par props.
-- Storybook : documentation, états interactifs et contrôle d'accessibilité.
 
-## Catalogue
+## Démarrage rapide avec Next.js
 
-`ui-core` expose 42 primitives et sous-composants : boutons, cartes composables, formulaires, feedback, navigation par liens ou menu, accordéon, contenu éditorial, lignes clé/valeur et notation accessible.
+### 1. Prérequis
 
-`ui-patterns` expose 28 assemblages construits exclusivement avec ces primitives : cartes studio et réservation, formulaires structurés, détails, contenus embarqués, états d’erreur, avis, notifications, KPI, profil, en-têtes, navigation mobile, panneau d’authentification, pagination et stepper.
+- React `18.2` ou supérieur.
+- React DOM `18.2` ou supérieur.
+- Tailwind CSS `4` ou supérieur.
+- Un projet qui traite la feuille CSS globale avec Tailwind, par exemple Next.js avec `@tailwindcss/postcss`.
 
-Le catalogue source couvre désormais 128 composants extraits ou consolidés, aucun candidat en attente et 115 composants volontairement conservés dans le produit. Ces 115 composants ne sont pas des oublis : ils restent couplés aux routes, actions, services ou règles métier de Record'air.
-
-Le Storybook liste chaque export public dans sa famille. L’entrée `Docs` de chaque famille affiche les exemples et leur code source, ouvert par défaut. `Inventory/Record'air source` suit séparément la couverture des 243 composants du produit afin de ne pas confondre API extraite et migration complète.
-
-Références : [catalogue complet](./docs/COMPONENT_CATALOG.md) et [standard de documentation](./docs/DOCUMENTATION_STANDARD.md).
-
-Le scope npm public est `@recordair`, rattaché à l’organisation npm Record'air.
-
-## Installation dans un projet
+Avec un nouveau projet Next.js, activez Tailwind CSS lors de la création du projet :
 
 ```bash
-npm install @recordair/ui-core @recordair/ui-patterns @recordair/theme-recordair tailwindcss
+npx create-next-app@latest mon-projet --typescript --tailwind --app
+cd mon-projet
 ```
 
-Dans la feuille CSS globale Tailwind v4 :
+### 2. Installer le design system
+
+Choisissez la commande correspondant au gestionnaire du projet :
+
+```bash
+# npm
+npm install @recordair/ui-core @recordair/ui-patterns @recordair/theme-recordair tailwindcss
+
+# pnpm
+pnpm add @recordair/ui-core @recordair/ui-patterns @recordair/theme-recordair tailwindcss
+
+# yarn
+yarn add @recordair/ui-core @recordair/ui-patterns @recordair/theme-recordair tailwindcss
+```
+
+Installez les trois packages pour disposer du catalogue complet. `ui-patterns` utilise `ui-core` comme peer dependency.
+
+### 3. Charger le thème et déclarer les sources Tailwind
+
+Tailwind CSS ignore `node_modules` pendant sa détection automatique. La feuille CSS globale doit donc importer le thème et déclarer explicitement les deux packages de composants.
+
+Pour `app/globals.css` :
 
 ```css
 @import "tailwindcss";
 @import "@recordair/theme-recordair";
+
+@source "../node_modules/@recordair/ui-core/dist";
+@source "../node_modules/@recordair/ui-patterns/dist";
 ```
 
-Le thème déclare lui-même les dossiers compilés des deux packages avec `@source`. Le projet consommateur n'a pas à safelister les classes.
+Pour `src/app/globals.css` :
+
+```css
+@import "tailwindcss";
+@import "@recordair/theme-recordair";
+
+@source "../../node_modules/@recordair/ui-core/dist";
+@source "../../node_modules/@recordair/ui-patterns/dist";
+```
+
+Les chemins `@source` sont relatifs au fichier CSS qui les contient :
+
+| Emplacement de la feuille CSS | Préfixe vers `node_modules` |
+| --- | --- |
+| `globals.css` à la racine | `./node_modules` |
+| `app/globals.css` | `../node_modules` |
+| `src/app/globals.css` | `../../node_modules` |
+
+Si le projet n'utilise pas `ui-patterns`, retirez sa dépendance et sa directive `@source`.
+
+Le layout Next.js doit importer cette feuille une seule fois :
 
 ```tsx
-import { Button, Card, CardContent, CardHeader, CardTitle, Field, Input } from "@recordair/ui-core";
+import "./globals.css";
+
+const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
+  <html lang="fr">
+    <body>{children}</body>
+  </html>
+);
+
+export default RootLayout;
+```
+
+### 4. Utiliser les composants
+
+```tsx
+import {
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Field,
+  Input,
+} from "@recordair/ui-core";
 import { ProfileSectionCard } from "@recordair/ui-patterns";
 
-const Example = () => (
+const ProfileForm = () => (
   <ProfileSectionCard title="Profil" subtitle="Informations publiques">
     <Field label="Nom" htmlFor="name">
-      <Input id="name" />
+      <Input id="name" name="name" />
     </Field>
-    <Button>Enregistrer</Button>
+    <Button type="submit">Enregistrer</Button>
   </ProfileSectionCard>
 );
 
 const CustomCard = () => (
   <Card variant="elevated">
-    <CardHeader><CardTitle>Ma carte</CardTitle></CardHeader>
-    <CardContent>Les patterns restent des assemblages, pas de nouvelles primitives cachées.</CardContent>
+    <CardHeader>
+      <CardTitle>Ma carte</CardTitle>
+    </CardHeader>
+    <CardContent>Contenu du projet consommateur.</CardContent>
   </Card>
 );
 
-export { CustomCard, Example };
+export { CustomCard, ProfileForm };
+```
+
+Les icônes possèdent un point d'entrée dédié :
+
+```tsx
+import { SearchIcon } from "@recordair/ui-core/icons";
+```
+
+### 5. Utiliser un composant interactif dans Next.js
+
+Ajoutez `"use client"` dans le composant consommateur lorsqu'il conserve un état ou fournit des callbacks :
+
+```tsx
+"use client";
+
+import { useState } from "react";
+import { Button, Modal } from "@recordair/ui-core";
+
+const ModalExample = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>Ouvrir</Button>
+      <Modal isOpen={isOpen} title="Confirmation" onClose={() => setIsOpen(false)}>
+        Contenu de la modale
+      </Modal>
+    </>
+  );
+};
+
+export { ModalExample };
+```
+
+Aucune option `transpilePackages` n'est nécessaire : les packages npm contiennent déjà le JavaScript ESM et les déclarations TypeScript compilés.
+
+## Vérifier l'installation
+
+Après l'installation ou une modification des directives `@source` :
+
+```bash
+rm -rf .next
+npm run dev
+```
+
+Vérifiez qu'un `Button` possède sa couleur, ses espacements, son rayon et son état de focus. Une interface presque entièrement noire et blanche, sans padding ni cartes, signifie généralement que Tailwind ne scanne pas les packages.
+
+## Dépannage
+
+### Les composants s'affichent sans styles
+
+1. Vérifiez que `globals.css` contient les deux imports et les deux directives `@source`.
+2. Vérifiez le nombre de `../` selon l'emplacement réel de `globals.css`.
+3. Vérifiez que le layout importe `globals.css`.
+4. Supprimez `.next`, puis redémarrez le serveur de développement.
+5. Vérifiez que Tailwind CSS est en version `4` ou supérieure.
+
+### Les tokens sont présents, mais les cartes et boutons restent bruts
+
+Le thème est chargé, mais les dossiers `dist` ne sont pas scannés. Corrigez les chemins `@source` ; il n'est pas nécessaire de safelister chaque classe manuellement.
+
+### Une icône ne peut pas être importée
+
+Utilisez le sous-chemin public :
+
+```tsx
+import { BellIcon } from "@recordair/ui-core/icons";
+```
+
+N'importez pas directement un fichier interne de `dist`.
+
+### Erreur de peer dependency
+
+Installez ensemble React, React DOM, Tailwind CSS et les packages Record'air :
+
+```bash
+npm install react react-dom tailwindcss @recordair/ui-core @recordair/ui-patterns @recordair/theme-recordair
 ```
 
 ## Personnaliser le thème
 
-Les primitives ne dépendent que de tokens sémantiques. Un autre projet peut remplacer le thème Record'air par un package exposant les mêmes tokens ou surcharger les variables sources :
+Les composants utilisent des tokens sémantiques. Un projet peut surcharger les variables sources après l'import du thème :
 
 ```css
 :root {
-  --recordair-color-brand-primary: #3157d5;
-  --recordair-color-brand-gradient-from: #3157d5;
-  --recordair-color-brand-gradient-to: #7c3aed;
-  --recordair-font-sans: "Geist", sans-serif;
+  --recordair-color-brand-primary: var(--color-brand-project);
+  --recordair-color-brand-gradient-from: var(--color-brand-project);
+  --recordair-color-brand-gradient-to: var(--color-accent-project);
+  --recordair-font-sans: var(--font-project);
 }
 ```
 
-## Développement
+Conservez les noms de tokens et fournissez les valeurs depuis le système de variables du projet consommateur.
+
+## Documentation du catalogue
+
+- Storybook : exemples, états, contrôles et code source de chaque famille.
+- [Catalogue des composants](./docs/COMPONENT_CATALOG.md).
+- [Inventaire de migration](./docs/MIGRATION_INVENTORY.md).
+- [Standard de documentation](./docs/DOCUMENTATION_STANDARD.md).
+
+`ui-core` expose 42 primitives et sous-composants. `ui-patterns` expose 28 assemblages. L'inventaire source suit séparément les composants volontairement conservés dans le produit Record'air.
+
+## Développement du monorepo
 
 ```bash
 npm install
+npm run typecheck
 npm run build
 npm run storybook
 ```
 
-Avant publication :
+Avant une publication :
 
 ```bash
 npm run build-storybook
 npm run pack:dry-run
 ```
 
-Voir [l'inventaire de migration](./docs/MIGRATION_INVENTORY.md) pour la frontière entre design system et logique produit.
+## Licence
+
+Licence propriétaire, tous droits réservés. La disponibilité publique sur npm ne confère aucun droit d'utilisation, de copie, de modification ou de redistribution sans autorisation écrite préalable. Voir [LICENSE](./LICENSE).

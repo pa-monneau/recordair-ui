@@ -141,3 +141,15 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Local tooling and generated Storybook output
+.idea/
+.npm-cache/
+storybook-static/
+.DS_Store
+
+# Generated files accidentally emitted next to icon sources
+packages/ui-core/src/icons/*.js
+packages/ui-core/src/icons/*.js.map
+packages/ui-core/src/icons/*.d.ts
+packages/ui-core/src/icons/*.d.ts.map

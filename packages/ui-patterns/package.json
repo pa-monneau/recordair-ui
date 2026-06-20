@@ -1,0 +1,28 @@
+{
+  "name": "@recordair-ds/ui-patterns",
+  "version": "0.1.0",
+  "description": "Patterns métier découplés issus de l'interface Record'air.",
+  "type": "module",
+  "files": ["dist"],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@recordair-ds/ui-core": "0.1.0"
+  },
+  "peerDependencies": {
+    "react": ">=18.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "UNLICENSED"
+}

@@ -1,0 +1,131 @@
+@source "../../ui-core/dist";
+@source "../../ui-patterns/dist";
+
+@theme inline {
+  --color-brand-primary: var(--recordair-color-brand-primary, #4f46e5);
+  --color-brand-secondary: var(--recordair-color-brand-secondary, #d945ef);
+  --color-brand-gradient-from: var(--recordair-color-brand-gradient-from, #d945ef);
+  --color-brand-gradient-to: var(--recordair-color-brand-gradient-to, #6366f1);
+
+  --color-neutral-0: var(--recordair-color-neutral-0, #ffffff);
+  --color-neutral-50: var(--recordair-color-neutral-50, #fafafa);
+  --color-neutral-100: var(--recordair-color-neutral-100, #f4f4f5);
+  --color-neutral-200: var(--recordair-color-neutral-200, #e4e4e7);
+  --color-neutral-300: var(--recordair-color-neutral-300, #d4d4d8);
+  --color-neutral-400: var(--recordair-color-neutral-400, #a1a1aa);
+  --color-neutral-500: var(--recordair-color-neutral-500, #71717a);
+  --color-neutral-600: var(--recordair-color-neutral-600, #52525b);
+  --color-neutral-700: var(--recordair-color-neutral-700, #3f3f46);
+  --color-neutral-800: var(--recordair-color-neutral-800, #27272a);
+  --color-neutral-900: var(--recordair-color-neutral-900, #18181b);
+
+  --color-success: var(--recordair-color-success, #10b981);
+  --color-success-bg: var(--recordair-color-success-bg, #ecfdf5);
+  --color-success-border: var(--recordair-color-success-border, #a7f3d0);
+  --color-success-text: var(--recordair-color-success-text, #065f46);
+  --color-error: var(--recordair-color-error, #ef4444);
+  --color-error-bg: var(--recordair-color-error-bg, #fef2f2);
+  --color-error-border: var(--recordair-color-error-border, #fecaca);
+  --color-error-text: var(--recordair-color-error-text, #991b1b);
+  --color-warning: var(--recordair-color-warning, #f59e0b);
+  --color-warning-bg: var(--recordair-color-warning-bg, #fffbeb);
+  --color-warning-border: var(--recordair-color-warning-border, #fcd34d);
+  --color-warning-text: var(--recordair-color-warning-text, #92400e);
+  --color-info: var(--recordair-color-info, #3b82f6);
+  --color-info-bg: var(--recordair-color-info-bg, #eff6ff);
+  --color-info-border: var(--recordair-color-info-border, #bfdbfe);
+  --color-info-text: var(--recordair-color-info-text, #1e40af);
+  --color-urgent: var(--recordair-color-urgent, #ea580c);
+  --color-urgent-bg: var(--recordair-color-urgent-bg, #ffedd5);
+  --color-urgent-border: var(--recordair-color-urgent-border, #fed7aa);
+  --color-urgent-text: var(--recordair-color-urgent-text, #9a3412);
+  --color-star: var(--recordair-color-star, #fbbf24);
+
+  --color-role-artist-bg: var(--recordair-color-role-artist-bg, #fce7f3);
+  --color-role-artist-text: var(--recordair-color-role-artist-text, #a21caf);
+  --color-role-artist-from: var(--recordair-color-role-artist-from, #ed66a8);
+  --color-role-artist-to: var(--recordair-color-role-artist-to, #d945f0);
+  --color-role-studio-bg: var(--recordair-color-role-studio-bg, #e0e7ff);
+  --color-role-studio-text: var(--recordair-color-role-studio-text, #4338ca);
+  --color-role-studio-from: var(--recordair-color-role-studio-from, #6366f2);
+  --color-role-studio-to: var(--recordair-color-role-studio-to, #4d36d4);
+  --color-role-pro-bg: var(--recordair-color-role-pro-bg, #ccfbf1);
+  --color-role-pro-text: var(--recordair-color-role-pro-text, #115e59);
+  --color-role-pro-from: var(--recordair-color-role-pro-from, #0bc5c5);
+  --color-role-pro-to: var(--recordair-color-role-pro-to, #06a0a0);
+
+  --color-surface-page: var(--recordair-color-surface-page, #fafafa);
+  --color-surface-elevated: var(--recordair-color-surface-elevated, #ffffff);
+  --color-surface-inverted: var(--recordair-color-surface-inverted, #0f0f1a);
+  --color-surface-inverted-accent: var(--recordair-color-surface-inverted-accent, #1a1733);
+  --color-hero-from: var(--recordair-color-hero-from, #edf2ff);
+  --color-hero-to: var(--recordair-color-hero-to, #fcf2ff);
+
+  --spacing: 4px;
+  --spacing-0: 0px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-toggle-off: 2px;
+  --spacing-toggle-on: 22px;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --size-sidebar: 260px;
+  --size-form-label: 280px;
+  --size-avatar-sm: 28px;
+  --size-avatar-md: 40px;
+  --size-avatar-lg: 56px;
+  --size-avatar-xl: 80px;
+  --size-icon-sm: 16px;
+  --size-icon-md: 20px;
+  --size-icon-lg: 24px;
+  --size-btn-sm: 36px;
+  --size-btn-md: 44px;
+  --size-btn-lg: 52px;
+  --size-toggle-track-width: 44px;
+  --size-toggle-track-height: 24px;
+  --size-toggle-thumb: 20px;
+  --size-role-icon-box: 80px;
+  --size-role-card-min-height: 540px;
+  --size-card-media: 226px;
+
+  --text-caption: 12px;
+  --text-label: 13px;
+  --text-body-sm: 14px;
+  --text-body: 16px;
+  --text-heading-sm: 17px;
+  --text-heading-lg: 28px;
+
+  --border-width-control: 1.5px;
+
+  --shadow-elevated: 0 16px 48px 0 rgb(99 102 242 / 8%);
+  --shadow-brand: 0 8px 24px 0 rgb(99 102 242 / 40%);
+  --shadow-card: 0 12px 32px rgb(15 18 51 / 4%);
+
+  --font-sans: var(--recordair-font-sans, Inter, ui-sans-serif, system-ui, sans-serif);
+  --font-mono: var(--recordair-font-mono, ui-monospace, SFMono-Regular, monospace);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    background: var(--color-surface-page);
+    color: var(--color-neutral-900);
+    font-family: var(--font-sans);
+  }
+}

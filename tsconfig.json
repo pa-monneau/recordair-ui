@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@recordair-ds/ui-core": ["packages/ui-core/src/index.ts"],
+      "@recordair-ds/ui-core/*": ["packages/ui-core/src/*"],
+      "@recordair-ds/ui-patterns": ["packages/ui-patterns/src/index.ts"]
+    }
+  },
+  "include": ["packages/**/*.ts", "packages/**/*.tsx", "stories/**/*.ts", "stories/**/*.tsx", ".storybook/**/*.ts"]
+}

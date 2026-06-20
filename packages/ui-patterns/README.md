@@ -10,7 +10,7 @@ Les données, liens et actions sont fournis par props. Les routes, services et r
 npm install @recordair/ui-patterns @recordair/ui-core @recordair/theme-recordair tailwindcss
 ```
 
-Peer dependencies : React `18.2+` et `@recordair/ui-core@0.1.0`.
+Peer dependencies : React `18.2+` et `@recordair/ui-core@0.2.0`.
 
 ## Configuration CSS obligatoire
 

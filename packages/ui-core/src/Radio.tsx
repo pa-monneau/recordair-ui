@@ -17,7 +17,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
         ref={ref}
         type="radio"
         disabled={disabled}
-        className="mt-0.5 size-4 accent-brand-primary focus:ring-2 focus:ring-brand-primary/40"
+        className="mt-0.5 size-4 accent-brand-primary focus:outline-none focus:shadow-focus"
         {...rest}
       />
       <span className="flex flex-col gap-0.5">

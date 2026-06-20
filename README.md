@@ -11,11 +11,15 @@ Librairie React/TypeScript extraite de l'interface Record'air. Le repo produit r
 
 ## Catalogue
 
-`ui-core` expose plus de 30 primitives et sous-composants : boutons, boutons-liens, boutons icône, groupes d’actions, cartes composables, badges, avatars, boîtes d’icône, champs, recherche, textarea, radio, checkbox, select, toggle, alertes, modal, toast, skeleton, spinner, progression, onglets, chips et empty states.
+`ui-core` expose 42 primitives et sous-composants : boutons, cartes composables, formulaires, feedback, navigation par liens ou menu, accordéon, contenu éditorial, lignes clé/valeur et notation accessible.
 
-`ui-patterns` assemble exclusivement ces primitives pour les besoins Record'air : cartes studio et réservation, avis, notifications, KPI, profil, sélection de rôle, pagination, stepper et éléments de synthèse.
+`ui-patterns` expose 28 assemblages construits exclusivement avec ces primitives : cartes studio et réservation, formulaires structurés, détails, contenus embarqués, états d’erreur, avis, notifications, KPI, profil, en-têtes, navigation mobile, panneau d’authentification, pagination et stepper.
+
+Le catalogue source couvre désormais 128 composants extraits ou consolidés, aucun candidat en attente et 115 composants volontairement conservés dans le produit. Ces 115 composants ne sont pas des oublis : ils restent couplés aux routes, actions, services ou règles métier de Record'air.
 
 Le Storybook liste chaque export public dans sa famille. L’entrée `Docs` de chaque famille affiche les exemples et leur code source, ouvert par défaut. `Inventory/Record'air source` suit séparément la couverture des 243 composants du produit afin de ne pas confondre API extraite et migration complète.
+
+Références : [catalogue complet](./docs/COMPONENT_CATALOG.md) et [standard de documentation](./docs/DOCUMENTATION_STANDARD.md).
 
 Le scope npm `@recordair-ds` est provisoire. Le renommer avant la première publication est une opération mécanique et réversible.
 

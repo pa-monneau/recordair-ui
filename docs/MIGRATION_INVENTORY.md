@@ -38,14 +38,21 @@ Les imports Next.js ont été remplacés par des éléments web standards. Les t
 
 Les patterns ne redéfinissent plus les styles structurels de carte, badge, avatar, champ ou bouton. Ils composent `ui-core` et ne gardent localement que leur layout métier.
 
+## Lot 2 extrait
+
+- Navigation : `NavigationList`, `LinkTabs`, `MenuSelect`, `MobileNavigation`.
+- Structure : `SiteHeader`, `PageHeader`, `AuthVisualPanel`.
+- Comportement générique : `ScrollAnchor`.
+- Consolidations : `PasswordResetButton` vers `SubmitButton + Alert`, `ErrorPageContent` vers `ErrorState`.
+- Données et contenu : `Accordion`, `ContentBlock`, `KeyValue`, `RatingStars`, `BookingField`, `DetailCard`, `EmbeddedBookingCard`, `FormCard`, `Metric`.
+
+Les 12 candidats restants sont désormais extraits ou consolidés. L'inventaire source compte 128 éléments extraits, 0 candidat et 115 composants volontairement couplés au produit.
+
 ## Lots suivants
 
-### Lot 2, composants de composition, démarré
-
-- Navigation : shell, liens, menus mobiles, boutons d'en-tête.
-- Données : KPI et pagination extraits ; tableaux, filtres et empty states restent à traiter.
-- Marketplace : cartes studio, réservation et avis extraits ; galerie reste à traiter.
-- Compte : sidebars, panneaux de préférences, historique de paiement.
+- Tables, galeries, messagerie et réservation seulement lorsqu'une frontière visuelle stable est démontrée.
+- Sidebars et panneaux de préférences après séparation des actions et autorisations.
+- Adaptateurs de framework au besoin d'un premier projet consommateur.
 
 Contrat attendu : données par props, navigation par `href` ou adaptateur, traductions par libellés injectés.
 

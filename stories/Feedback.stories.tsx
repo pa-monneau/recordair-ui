@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Alert, Button, Modal, Skeleton, Spinner, Toast } from "@recordair-ds/ui-core";
 
-const FeedbackDemo = () => {
+const FeedbackCatalog = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [toastOpen, setToastOpen] = useState(false);
 
@@ -54,17 +54,68 @@ const FeedbackDemo = () => {
   );
 };
 
+const ModalExample = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button variant="secondary" onClick={() => setOpen(true)}>Ouvrir la modale</Button>
+      <Modal open={open} onClose={() => setOpen(false)} closeLabel="Fermer" labelledBy="standalone-modal-title">
+        <h2 id="standalone-modal-title" className="text-heading-sm font-semibold">Confirmer la réservation</h2>
+        <p className="mt-2 text-sm text-neutral-600">Le créneau sera bloqué pendant quinze minutes.</p>
+        <div className="mt-6 flex justify-end gap-3">
+          <Button variant="secondary" onClick={() => setOpen(false)}>Annuler</Button>
+          <Button onClick={() => setOpen(false)}>Confirmer</Button>
+        </div>
+      </Modal>
+    </>
+  );
+};
+
 const meta = {
   title: "Core/Feedback",
-  component: FeedbackDemo,
+  component: FeedbackCatalog,
   parameters: {
     layout: "centered",
   },
-} satisfies Meta<typeof FeedbackDemo>;
+} satisfies Meta<typeof FeedbackCatalog>;
 
 type Story = StoryObj<typeof meta>;
 
-const Interactive: Story = {};
+const Interactive: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { useState } from "react";
+import { Alert, Button, Modal, Skeleton, Spinner, Toast } from "@recordair-ds/ui-core";
+
+export const FeedbackExample = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [toastOpen, setToastOpen] = useState(false);
+
+  return (
+    <div className="flex flex-col gap-6">
+      <Alert tone="info" title="Information">La réservation reste modifiable.</Alert>
+      <Spinner label="Chargement" />
+      <Skeleton />
+      <Button onClick={() => setModalOpen(true)}>Ouvrir la modale</Button>
+      <Button onClick={() => setToastOpen(true)}>Afficher la notification</Button>
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)} labelledBy="modal-title">
+        <h2 id="modal-title">Confirmer l’action</h2>
+      </Modal>
+      <Toast
+        open={toastOpen}
+        variant="success"
+        message="Modifications enregistrées."
+        onClose={() => setToastOpen(false)}
+      />
+    </div>
+  );
+};`,
+      },
+    },
+  },
+};
 
 const AlertStory: Story = {
   name: "Alert",
@@ -73,12 +124,30 @@ const AlertStory: Story = {
 
 const ModalStory: Story = {
   name: "Modal",
-  render: () => (
-    <Modal open onClose={() => undefined} closeLabel="Fermer" labelledBy="standalone-modal-title">
-      <h2 id="standalone-modal-title" className="text-heading-sm font-semibold">Confirmer la réservation</h2>
-      <p className="mt-2 text-sm text-neutral-600">Le créneau sera bloqué pendant quinze minutes.</p>
-    </Modal>
-  ),
+  render: () => <ModalExample />,
+  parameters: {
+    docs: {
+      source: {
+        code: `import { useState } from "react";
+import { Button, Modal } from "@recordair-ds/ui-core";
+
+export const ConfirmationModal = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button variant="secondary" onClick={() => setOpen(true)}>Ouvrir la modale</Button>
+      <Modal open={open} onClose={() => setOpen(false)} labelledBy="modal-title">
+        <h2 id="modal-title">Confirmer la réservation</h2>
+        <Button variant="secondary" onClick={() => setOpen(false)}>Annuler</Button>
+        <Button onClick={() => setOpen(false)}>Confirmer</Button>
+      </Modal>
+    </>
+  );
+};`,
+      },
+    },
+  },
 };
 
 const ToastStory: Story = {

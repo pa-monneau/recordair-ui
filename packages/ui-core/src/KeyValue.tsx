@@ -1,0 +1,23 @@
+import type { HTMLAttributes, ReactNode } from "react";
+import { classNames } from "./classNames";
+
+type KeyValueProps = HTMLAttributes<HTMLDivElement> & {
+  label: ReactNode;
+  value: ReactNode;
+};
+
+const KeyValue = ({ label, value, className, ...rest }: KeyValueProps) => (
+  <div
+    className={classNames(
+      "flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4",
+      className,
+    )}
+    {...rest}
+  >
+    <dt className="text-sm text-neutral-500">{label}</dt>
+    <dd className="text-sm font-semibold text-neutral-900 sm:text-right">{value}</dd>
+  </div>
+);
+
+export { KeyValue };
+export type { KeyValueProps };

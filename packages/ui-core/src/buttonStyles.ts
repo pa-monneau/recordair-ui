@@ -36,7 +36,7 @@ const buttonClassName = ({
   className,
 }: ButtonStyleOptions): string =>
   classNames(
-    "inline-flex items-center justify-center gap-2 font-semibold transition disabled:cursor-not-allowed disabled:opacity-60",
+    "inline-flex items-center justify-center gap-2 font-semibold transition focus-visible:outline-none focus-visible:shadow-focus disabled:cursor-not-allowed disabled:opacity-60",
     shape === "pill" ? "rounded-full" : "rounded-md",
     sizeClasses[size],
     variantClasses[variant],

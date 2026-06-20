@@ -9,7 +9,7 @@ import {
   StudioCard,
 } from "@recordair-ds/ui-patterns";
 
-const MarketplaceDemo = () => {
+const MarketplaceOverview = () => {
   const [notificationVisible, setNotificationVisible] = useState(true);
 
   return (
@@ -99,15 +99,68 @@ const MarketplaceDemo = () => {
 
 const meta = {
   title: "Patterns/Marketplace",
-  component: MarketplaceDemo,
+  component: MarketplaceOverview,
   parameters: {
     layout: "padded",
   },
-} satisfies Meta<typeof MarketplaceDemo>;
+} satisfies Meta<typeof MarketplaceOverview>;
 
 type Story = StoryObj<typeof meta>;
 
-const Overview: Story = {};
+const Overview: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { useState } from "react";
+import { NotificationCard, Pagination, StudioCard } from "@recordair-ds/ui-patterns";
+
+export const Marketplace = () => {
+  const [notificationVisible, setNotificationVisible] = useState(true);
+
+  return (
+    <div className="grid gap-6">
+      <StudioCard studio={{
+        name: "Studio République",
+        location: "Lille Centre",
+        type: "Enregistrement",
+        rating: "4,9",
+        reviews: 38,
+        tags: ["Voix", "Mixage", "Podcast"],
+        priceLabel: "80 €",
+        rateSuffix: "par heure",
+        gradient: "studio",
+        href: "#",
+        ratingAriaLabel: "Note de 4,9 sur 5, 38 avis",
+      }} />
+      {notificationVisible ? (
+        <NotificationCard
+          notification={{ id: "notification-1", title: "Nouvelle réservation", read: false }}
+          unreadLabel="Non lue"
+          deleteLabel="Supprimer"
+          onOpen={() => undefined}
+          onDelete={() => setNotificationVisible(false)}
+        />
+      ) : null}
+      <Pagination
+        currentPage={1}
+        totalPages={12}
+        totalResults={128}
+        hrefForPage={(page) => \`#page-\${page}\`}
+        labels={{
+          navigation: "Pagination des studios",
+          previous: "Page précédente",
+          next: "Page suivante",
+          page: (page) => \`Page \${page}\`,
+          status: (current, total, results) => \`Page \${current} sur \${total}, \${results} résultats\`,
+        }}
+      />
+    </div>
+  );
+};`,
+      },
+    },
+  },
+};
 
 export default meta;
 export { Overview };

@@ -17,7 +17,24 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const DividerStory: Story = { name: "Divider" };
+const DividerStory: Story = {
+  name: "Divider",
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Divider } from "@recordair-ds/ui-core";
+
+export const Section = () => (
+  <div>
+    <span>Section supérieure</span>
+    <Divider />
+    <span>Section inférieure</span>
+  </div>
+);`,
+      },
+    },
+  },
+};
 
 export default meta;
 export { DividerStory };

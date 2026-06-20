@@ -7,7 +7,7 @@ import {
   TrendChip,
 } from "@recordair-ds/ui-patterns";
 
-const DashboardDemo = () => (
+const DashboardOverview = () => (
   <div className="grid w-full max-w-5xl gap-6">
     <SectionHeader title="Vue d’ensemble" actionLabel="Voir les revenus" actionHref="#" />
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -34,15 +34,36 @@ const DashboardDemo = () => (
 
 const meta = {
   title: "Patterns/Dashboard",
-  component: DashboardDemo,
+  component: DashboardOverview,
   parameters: {
     layout: "padded",
   },
-} satisfies Meta<typeof DashboardDemo>;
+} satisfies Meta<typeof DashboardOverview>;
 
 type Story = StoryObj<typeof meta>;
 
-const Overview: Story = {};
+const Overview: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Card } from "@recordair-ds/ui-core";
+import { KpiCard, SectionHeader, SummaryLine, TrendChip } from "@recordair-ds/ui-patterns";
+
+export const Dashboard = () => (
+  <div className="grid gap-6">
+    <SectionHeader title="Vue d’ensemble" actionLabel="Voir les revenus" actionHref="#" />
+    <KpiCard label="Revenu net" value="4 280 €" supportingText="+12 %" supportingTone="success" />
+    <Card className="gap-4 p-6">
+      <TrendChip direction="up" value="+12 %" accessibleLabel="Hausse de 12 pour cent" />
+      <SummaryLine label="Chiffre d’affaires" value="5 035 €" />
+      <SummaryLine label="Revenu net" value="4 280 €" />
+    </Card>
+  </div>
+);`,
+      },
+    },
+  },
+};
 
 export default meta;
 export { Overview };

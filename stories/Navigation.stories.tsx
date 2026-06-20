@@ -9,7 +9,7 @@ const tabItems = [
   { id: "cancelled", label: "Annulées" },
 ] as const;
 
-const NavigationDemo = () => {
+const NavigationCatalog = () => {
   const [activeTab, setActiveTab] = useState("upcoming");
   const [selectedChip, setSelectedChip] = useState("recording");
 
@@ -33,13 +33,45 @@ const NavigationDemo = () => {
 
 const meta = {
   title: "Core/Navigation and states",
-  component: NavigationDemo,
+  component: NavigationCatalog,
   parameters: { layout: "centered" },
-} satisfies Meta<typeof NavigationDemo>;
+} satisfies Meta<typeof NavigationCatalog>;
 
 type Story = StoryObj<typeof meta>;
 
-const Catalog: Story = {};
+const Catalog: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { useState } from "react";
+import { Button, ChoiceChip, EmptyState, IconBox, Progress, Tabs } from "@recordair-ds/ui-core";
+import { MicIcon, SearchIcon } from "@recordair-ds/ui-core/icons";
+
+export const BookingNavigation = () => {
+  const [activeTab, setActiveTab] = useState("upcoming");
+
+  return (
+    <div className="flex flex-col gap-8">
+      <Tabs
+        items={[{ id: "upcoming", label: "À venir" }, { id: "past", label: "Passées" }]}
+        activeId={activeTab}
+        label="Réservations"
+        onChange={setActiveTab}
+      />
+      <ChoiceChip selected icon={<MicIcon className="size-4" />}>Enregistrement</ChoiceChip>
+      <Progress value={72} label="Profil complété à 72 pour cent" />
+      <EmptyState
+        icon={<IconBox tone="neutral" icon={<SearchIcon />} />}
+        title="Aucun studio trouvé"
+        action={<Button variant="secondary">Réinitialiser</Button>}
+      />
+    </div>
+  );
+};`,
+      },
+    },
+  },
+};
 
 const TabsStory: Story = {
   name: "Tabs",

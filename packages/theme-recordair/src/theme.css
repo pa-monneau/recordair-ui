@@ -60,6 +60,9 @@
   --color-surface-inverted-accent: var(--recordair-color-surface-inverted-accent, #1a1733);
   --color-hero-from: var(--recordair-color-hero-from, #edf2ff);
   --color-hero-to: var(--recordair-color-hero-to, #fcf2ff);
+  --color-auth-gradient-from: var(--recordair-color-auth-gradient-from, #d945f0);
+  --color-auth-gradient-mid: var(--recordair-color-auth-gradient-mid, #a854f7);
+  --color-auth-gradient-to: var(--recordair-color-auth-gradient-to, #6366f2);
 
   --spacing: 4px;
   --spacing-0: 0px;
@@ -100,19 +103,48 @@
   --size-role-icon-box: 80px;
   --size-role-card-min-height: 540px;
   --size-card-media: 226px;
+  --size-auth-panel: 720px;
+  --size-auth-halo: 500px;
+  --size-auth-halo-x: 380px;
+  --size-auth-halo-y: 480px;
+  --size-mobile-menu: 224px;
+  --size-nav-badge-min: 20px;
 
   --text-caption: 12px;
+  --text-overline: 11px;
   --text-label: 13px;
   --text-body-sm: 14px;
   --text-body: 16px;
   --text-heading-sm: 17px;
+  --text-heading-md: 18px;
   --text-heading-lg: 28px;
+  --text-display-lg: 72px;
+  --text-display-xl: 96px;
+  --text-auth-heading: 56px;
+
+  --leading-copy: 1.75;
+  --leading-heading: 1.45;
+  --leading-auth-heading: 60px;
+  --tracking-auth-heading: -1.2px;
 
   --border-width-control: 1.5px;
 
   --shadow-elevated: 0 16px 48px 0 rgb(99 102 242 / 8%);
   --shadow-brand: 0 8px 24px 0 rgb(99 102 242 / 40%);
   --shadow-card: 0 12px 32px rgb(15 18 51 / 4%);
+  --shadow-focus: 0 0 0 3px rgb(79 70 229 / 28%);
+
+  --background-image-auth: linear-gradient(128.66deg, var(--color-auth-gradient-from) 0%, var(--color-auth-gradient-mid) 36%, var(--color-auth-gradient-to) 72%);
+  --background-image-auth-halo: radial-gradient(closest-side, rgb(255 255 255 / 25%), transparent 70%);
+
+  --container-content-sm: 448px;
+  --container-content-md: 672px;
+  --container-content-lg: 820px;
+  --container-auth-copy: 440px;
+  --container-site: 1280px;
+  --size-embedded-card: 420px;
+  --size-embedded-media: 120px;
+  --size-inventory-table: 896px;
 
   --font-sans: var(--recordair-font-sans, Inter, ui-sans-serif, system-ui, sans-serif);
   --font-mono: var(--recordair-font-mono, ui-monospace, SFMono-Regular, monospace);

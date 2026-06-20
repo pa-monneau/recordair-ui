@@ -23,7 +23,7 @@ const Select = forwardRef<HTMLInputElement, SelectProps>(function Select(
         aria-invalid={invalid || undefined}
         className={classNames(
           "h-[var(--size-btn-md)] w-full rounded-md border-control bg-neutral-0 px-4 pr-10 text-sm text-neutral-900 placeholder:text-neutral-400",
-          "focus:outline-none focus:ring-2 focus:ring-brand-primary/40",
+          "focus:outline-none focus:shadow-focus",
           "disabled:bg-neutral-100 disabled:text-neutral-400",
           invalid
             ? "border-error focus:border-error"

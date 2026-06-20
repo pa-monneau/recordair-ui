@@ -18,7 +18,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       aria-invalid={invalid || undefined}
       className={classNames(
         "h-[var(--size-btn-md)] w-full rounded-md border-control bg-neutral-0 px-4 text-sm text-neutral-900 placeholder:text-neutral-400",
-        "focus:outline-none focus:ring-2 focus:ring-brand-primary/40",
+        "focus:outline-none focus:shadow-focus",
         "disabled:bg-neutral-100 disabled:text-neutral-400",
         Boolean(leadingIcon) && "pl-11",
         Boolean(trailingIcon) && "pr-11",

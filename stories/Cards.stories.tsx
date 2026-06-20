@@ -14,7 +14,7 @@ import {
 } from "@recordair-ds/ui-core";
 import { AudioLinesIcon, StarIcon } from "@recordair-ds/ui-core/icons";
 
-const CardsDemo = () => (
+const CardsCatalog = () => (
   <div className="grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
     <Card>
       <CardHeader>
@@ -44,13 +44,47 @@ const CardsDemo = () => (
 
 const meta = {
   title: "Core/Cards",
-  component: CardsDemo,
+  component: CardsCatalog,
   parameters: { layout: "padded" },
-} satisfies Meta<typeof CardsDemo>;
+} satisfies Meta<typeof CardsCatalog>;
 
 type Story = StoryObj<typeof meta>;
 
-const Catalog: Story = {};
+const Catalog: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import {
+  Avatar,
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardMedia,
+  CardTitle,
+} from "@recordair-ds/ui-core";
+
+export const StudioCard = () => (
+  <Card variant="interactive" padding="none">
+    <CardMedia className="bg-gradient-to-br from-role-studio-from to-role-studio-to" />
+    <CardHeader>
+      <CardTitle>Studio République</CardTitle>
+      <CardDescription>Lille, France</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <Badge tone="success" dot>Disponible</Badge>
+      <Avatar name="Alex Martin" size="sm" />
+    </CardContent>
+    <CardFooter><Button size="sm">Réserver</Button></CardFooter>
+  </Card>
+);`,
+      },
+    },
+  },
+};
 
 const CardStory: Story = {
   name: "Card",

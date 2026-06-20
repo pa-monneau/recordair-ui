@@ -18,7 +18,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(
       className={classNames(
         "mt-0.5 size-5 shrink-0 rounded-sm border-control bg-neutral-0 transition",
         "checked:border-brand-primary checked:bg-brand-primary",
-        "focus:outline-none focus:ring-2 focus:ring-brand-primary/40",
+        "focus:outline-none focus:shadow-focus",
         invalid ? "border-error" : "border-neutral-300",
         className,
       )}

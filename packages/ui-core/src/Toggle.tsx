@@ -38,7 +38,7 @@ const Toggle = ({
     <label
       htmlFor={id}
       className={classNames(
-        "relative inline-flex h-[var(--size-toggle-track-height)] w-[var(--size-toggle-track-width)] shrink-0 items-center rounded-full transition-colors",
+        "relative inline-flex h-[var(--size-toggle-track-height)] w-[var(--size-toggle-track-width)] shrink-0 items-center rounded-full transition-colors focus-within:shadow-focus",
         isChecked ? "bg-brand-primary" : "bg-neutral-200",
         disabled ? "cursor-not-allowed opacity-40" : "cursor-pointer",
       )}

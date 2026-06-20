@@ -29,7 +29,7 @@ const Tabs = ({ items, activeId, label, onChange, className }: TabsProps) => (
           disabled={item.disabled}
           onClick={() => onChange(item.id)}
           className={classNames(
-            "relative h-[var(--size-btn-md)] px-4 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/40",
+            "relative h-[var(--size-btn-md)] px-4 text-sm font-semibold transition focus:outline-none focus-visible:shadow-focus",
             active ? "text-brand-primary after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:bg-brand-primary" : "text-neutral-500 hover:text-neutral-900",
             item.disabled && "cursor-not-allowed opacity-50",
           )}

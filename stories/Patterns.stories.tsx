@@ -22,7 +22,7 @@ import {
   TrendChip,
 } from "@recordair-ds/ui-patterns";
 
-const PatternsDemo = () => (
+const PatternsOverview = () => (
   <div className="grid w-full max-w-5xl gap-8">
     <div className="flex flex-wrap items-center gap-4 rounded-lg border border-neutral-200 bg-neutral-0 p-6">
       <RecordairLogo />
@@ -58,15 +58,58 @@ const PatternsDemo = () => (
 
 const meta = {
   title: "Patterns/Record'air",
-  component: PatternsDemo,
+  component: PatternsOverview,
   parameters: {
     layout: "padded",
   },
-} satisfies Meta<typeof PatternsDemo>;
+} satisfies Meta<typeof PatternsOverview>;
 
 type Story = StoryObj<typeof meta>;
 
-const Overview: Story = {};
+const Overview: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: `import { Input } from "@recordair-ds/ui-core";
+import { MicIcon } from "@recordair-ds/ui-core/icons";
+import {
+  BookingChip,
+  FormRow,
+  ProfileSectionCard,
+  RecordairLogo,
+  RoleBadge,
+  RolePickerCard,
+  StatusPill,
+} from "@recordair-ds/ui-patterns";
+
+export const RecordairPatterns = () => (
+  <div className="grid gap-8">
+    <RecordairLogo />
+    <div className="flex gap-3">
+      <RoleBadge role="artist" />
+      <StatusPill label="Vérifié" tone="success" />
+      <BookingChip active>14:00</BookingChip>
+    </div>
+    <ProfileSectionCard title="Informations" subtitle="Données visibles sur ton profil.">
+      <FormRow label="Nom public" htmlFor="public-name" last>
+        <Input id="public-name" defaultValue="Studio République" />
+      </FormRow>
+    </ProfileSectionCard>
+    <RolePickerCard
+      role="artist"
+      href="#"
+      Icon={MicIcon}
+      title="Je suis artiste"
+      description="Trouve et réserve le studio adapté à ton projet."
+      bullets={["Comparer les studios", "Réserver un créneau", "Payer en ligne"]}
+      cta="Créer mon compte"
+    />
+  </div>
+);`,
+      },
+    },
+  },
+};
 
 const BookingChipStory: Story = { name: "BookingChip", render: () => <BookingChip active>14:00</BookingChip> };
 

@@ -41,5 +41,27 @@ type Story = StoryObj<typeof meta>;
 
 const Catalog: Story = {};
 
+const TabsStory: Story = {
+  name: "Tabs",
+  render: () => <Tabs items={tabItems} activeId="upcoming" label="Réservations" onChange={() => undefined} />,
+};
+
+const ChoiceChipStory: Story = {
+  name: "ChoiceChip",
+  render: () => <ChoiceChip selected icon={<MicIcon className="size-4" />}>Enregistrement</ChoiceChip>,
+};
+
+const ProgressStory: Story = {
+  name: "Progress",
+  render: () => <div className="w-96"><Progress value={72} label="Profil complété à 72 pour cent" /></div>,
+};
+
+const EmptyStateStory: Story = {
+  name: "EmptyState",
+  render: () => (
+    <div className="w-[32rem]"><EmptyState icon={<IconBox tone="neutral" icon={<SearchIcon />} />} title="Aucun studio trouvé" description="Modifie les filtres de recherche." /></div>
+  ),
+};
+
 export default meta;
-export { Catalog };
+export { Catalog, ChoiceChipStory, EmptyStateStory, ProgressStory, TabsStory };

@@ -66,5 +66,35 @@ type Story = StoryObj<typeof meta>;
 
 const Interactive: Story = {};
 
+const AlertStory: Story = {
+  name: "Alert",
+  render: () => <div className="w-[32rem]"><Alert tone="success" title="Paiement confirmé">La réservation est enregistrée.</Alert></div>,
+};
+
+const ModalStory: Story = {
+  name: "Modal",
+  render: () => (
+    <Modal open onClose={() => undefined} closeLabel="Fermer" labelledBy="standalone-modal-title">
+      <h2 id="standalone-modal-title" className="text-heading-sm font-semibold">Confirmer la réservation</h2>
+      <p className="mt-2 text-sm text-neutral-600">Le créneau sera bloqué pendant quinze minutes.</p>
+    </Modal>
+  ),
+};
+
+const ToastStory: Story = {
+  name: "Toast",
+  render: () => <Toast open variant="success" message="Modifications enregistrées." closeLabel="Fermer" onClose={() => undefined} />,
+};
+
+const SpinnerStory: Story = {
+  name: "Spinner",
+  render: () => <Spinner label="Chargement" size="lg" />,
+};
+
+const SkeletonStory: Story = {
+  name: "Skeleton",
+  render: () => <div className="w-80 space-y-3"><Skeleton shape="rectangle" /><Skeleton /><Skeleton className="w-2/3" /></div>,
+};
+
 export default meta;
-export { Interactive };
+export { AlertStory, Interactive, ModalStory, SkeletonStory, SpinnerStory, ToastStory };

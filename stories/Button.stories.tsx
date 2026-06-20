@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Button, ButtonGroup, IconButton, LinkButton } from "@recordair-ds/ui-core";
+import { Button, ButtonGroup, IconButton, LinkButton, SubmitButton } from "@recordair-ds/ui-core";
 import { ArrowRightIcon, HeartIcon, SaveIcon } from "@recordair-ds/ui-core/icons";
 
 const ButtonCatalog = () => (
@@ -77,5 +77,37 @@ const Catalog: Story = {
   render: () => <ButtonCatalog />,
 };
 
+const IconButtonStory: Story = {
+  name: "IconButton",
+  render: () => <IconButton label="Ajouter aux favoris" icon={<HeartIcon className="size-4" />} variant="secondary" />,
+};
+
+const LinkButtonStory: Story = {
+  name: "LinkButton",
+  render: () => <LinkButton href="#" trailingIcon={<ArrowRightIcon className="size-4" />}>Voir le studio</LinkButton>,
+};
+
+const ButtonGroupStory: Story = {
+  name: "ButtonGroup",
+  render: () => <ButtonGroup aria-label="Actions"><Button variant="secondary">Annuler</Button><Button>Confirmer</Button></ButtonGroup>,
+};
+
+const SubmitButtonStory: Story = {
+  name: "SubmitButton",
+  render: () => <form><SubmitButton pendingLabel="Enregistrement">Enregistrer</SubmitButton></form>,
+};
+
 export default meta;
-export { Catalog, Danger, Ghost, Loading, Primary, Secondary, WithIcons };
+export {
+  ButtonGroupStory,
+  Catalog,
+  Danger,
+  Ghost,
+  IconButtonStory,
+  LinkButtonStory,
+  Loading,
+  Primary,
+  Secondary,
+  SubmitButtonStory,
+  WithIcons,
+};

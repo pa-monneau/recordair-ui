@@ -15,6 +15,8 @@ Librairie React/TypeScript extraite de l'interface Record'air. Le repo produit r
 
 `ui-patterns` assemble exclusivement ces primitives pour les besoins Record'air : cartes studio et réservation, avis, notifications, KPI, profil, sélection de rôle, pagination, stepper et éléments de synthèse.
 
+Le Storybook liste chaque export public dans sa famille. L’entrée `Docs` de chaque famille affiche les exemples et leur code source, ouvert par défaut. `Inventory/Record'air source` suit séparément la couverture des 243 composants du produit afin de ne pas confondre API extraite et migration complète.
+
 Le scope npm `@recordair-ds` est provisoire. Le renommer avant la première publication est une opération mécanique et réversible.
 
 ## Installation dans un projet

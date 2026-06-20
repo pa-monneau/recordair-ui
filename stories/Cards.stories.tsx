@@ -52,5 +52,49 @@ type Story = StoryObj<typeof meta>;
 
 const Catalog: Story = {};
 
+const CardStory: Story = {
+  name: "Card",
+  render: () => <Card padding="md" className="w-80">Contenu de la carte</Card>,
+};
+
+const CardHeaderStory: Story = {
+  name: "CardHeader",
+  render: () => <Card className="w-80"><CardHeader><CardTitle>En-tête</CardTitle><CardDescription>Description</CardDescription></CardHeader></Card>,
+};
+
+const CardContentStory: Story = {
+  name: "CardContent",
+  render: () => <Card className="w-80"><CardContent>Contenu principal</CardContent></Card>,
+};
+
+const CardFooterStory: Story = {
+  name: "CardFooter",
+  render: () => <Card className="w-80"><CardFooter divided><Button size="sm">Action</Button></CardFooter></Card>,
+};
+
+const CardMediaStory: Story = {
+  name: "CardMedia",
+  render: () => <Card className="w-80"><CardMedia ratio="wide" className="bg-gradient-to-br from-role-studio-from to-role-studio-to" /></Card>,
+};
+
+const CardTitleStory: Story = {
+  name: "CardTitle",
+  render: () => <CardTitle>Titre de carte</CardTitle>,
+};
+
+const CardDescriptionStory: Story = {
+  name: "CardDescription",
+  render: () => <CardDescription>Description secondaire de la carte.</CardDescription>,
+};
+
 export default meta;
-export { Catalog };
+export {
+  CardContentStory,
+  CardDescriptionStory,
+  CardFooterStory,
+  CardHeaderStory,
+  CardMediaStory,
+  CardStory,
+  CardTitleStory,
+  Catalog,
+};

@@ -12,7 +12,10 @@ type RolePickerCardProps = {
   bullets: readonly string[];
   cta: string;
   linkComponent?: ElementType;
+  interaction?: RolePickerInteraction;
 };
+
+type RolePickerInteraction = "action" | "card";
 
 const roleClasses: Record<
   Role,
@@ -44,16 +47,21 @@ const RolePickerCard = ({
   bullets,
   cta,
   linkComponent,
+  interaction = "action",
 }: RolePickerCardProps) => {
   const classes = roleClasses[role];
+  const LinkComponent = linkComponent ?? "a";
+  const cardClassName = [
+    "min-h-[var(--size-role-card-min-height)] gap-6 rounded-xl",
+    interaction === "card"
+      ? "border-control shadow-card transition group-hover:-translate-y-1 group-hover:border-neutral-300 group-hover:shadow-lg group-focus-visible:shadow-focus"
+      : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
-  return (
-    <Card
-      as="article"
-      variant="elevated"
-      padding="lg"
-      className="min-h-[var(--size-role-card-min-height)] gap-6 rounded-xl"
-    >
+  const content = (
+    <>
       <IconBox tone={classes.iconTone} size="lg" icon={<Icon />} />
       <CardTitle
         level={2}
@@ -78,8 +86,8 @@ const RolePickerCard = ({
       </ul>
       <CardContent className="flex-1" />
       <LinkButton
-        as={linkComponent}
-        href={href}
+        as={interaction === "card" ? "span" : linkComponent}
+        href={interaction === "action" ? href : undefined}
         size="lg"
         block
         trailingIcon={<ArrowRightIcon className="size-4" />}
@@ -87,9 +95,38 @@ const RolePickerCard = ({
       >
         {cta}
       </LinkButton>
+    </>
+  );
+
+  if (interaction === "card") {
+    return (
+      <LinkComponent
+        href={href}
+        className="group block rounded-xl focus-visible:outline-none"
+      >
+        <Card
+          as="article"
+          variant="default"
+          padding="lg"
+          className={cardClassName}
+        >
+          {content}
+        </Card>
+      </LinkComponent>
+    );
+  }
+
+  return (
+    <Card
+      as="article"
+      variant="elevated"
+      padding="lg"
+      className={cardClassName}
+    >
+      {content}
     </Card>
   );
 };
 
 export { RolePickerCard };
-export type { RolePickerCardProps };
+export type { RolePickerCardProps, RolePickerInteraction };

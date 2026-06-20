@@ -153,8 +153,8 @@ const ReviewCardStory: Story = {
 };
 
 const RolePickerCardStory: Story = {
-  name: "RolePickerCard",
-  render: () => <div className="w-96"><RolePickerCard role="artist" href="#" Icon={MicIcon} title="Je suis artiste" description="Trouve le studio adapté à ton projet." bullets={["Comparer les studios", "Réserver un créneau", "Payer en ligne"]} cta="Créer mon compte" /></div>,
+  name: "RolePickerCard - carte interactive",
+  render: () => <div className="w-96"><RolePickerCard interaction="card" role="artist" href="#" Icon={MicIcon} title="Je suis artiste" description="Trouve le studio adapté à ton projet." bullets={["Comparer les studios", "Réserver un créneau", "Payer en ligne"]} cta="Créer mon compte" /></div>,
 };
 
 const SectionHeaderStory: Story = { name: "SectionHeader", render: () => <div className="w-[36rem]"><SectionHeader title="Studios recommandés" actionLabel="Tout voir" actionHref="#" /></div> };

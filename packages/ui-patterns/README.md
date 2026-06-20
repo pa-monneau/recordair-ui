@@ -59,6 +59,7 @@ const LocalizedNavigation = () => (
     <RecordairLogo as={Link} href="/" />
     <RolePickerCard
       linkComponent={Link}
+      interaction="card"
       role="artist"
       href="/signup/client"
       Icon={MicIcon}
@@ -72,6 +73,8 @@ const LocalizedNavigation = () => (
 
 export { LocalizedNavigation };
 ```
+
+`interaction="action"` conserve un CTA cliquable dans une carte statique. `interaction="card"` rend toute la carte cliquable et transforme visuellement le CTA en libellé non interactif afin d'éviter les liens imbriqués.
 
 ## Dépannage
 

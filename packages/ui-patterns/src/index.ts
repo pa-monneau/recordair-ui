@@ -37,7 +37,7 @@ export type { RecordairMarkProps } from "./RecordairMark";
 export { RoleBadge } from "./RoleBadge";
 export type { Role, RoleBadgeProps } from "./RoleBadge";
 export { RolePickerCard } from "./RolePickerCard";
-export type { RolePickerCardProps } from "./RolePickerCard";
+export type { RolePickerCardProps, RolePickerInteraction } from "./RolePickerCard";
 export { ReviewCard } from "./ReviewCard";
 export type { ReviewCardData, ReviewCardProps } from "./ReviewCard";
 export { SectionHeader } from "./SectionHeader";

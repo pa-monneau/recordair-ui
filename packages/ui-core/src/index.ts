@@ -61,7 +61,7 @@ export type { SelectProps } from "./Select";
 export { SubmitButton } from "./SubmitButton";
 export type { SubmitButtonProps } from "./SubmitButton";
 export { Toast } from "./Toast";
-export type { ToastProps, ToastVariant } from "./Toast";
+export type { ToastProps, ToastVariant, ToastPosition } from "./Toast";
 export { Toggle } from "./Toggle";
 export type { ToggleProps } from "./Toggle";
 export { Progress } from "./Progress";

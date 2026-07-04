@@ -41,6 +41,13 @@ const NavigationCatalog = () => {
   );
 };
 
+/**
+ * Navigation par liens : `LinkTabs` a sa propre page (voir `LinkTabs` plus
+ * bas), `NavigationList` et `MenuSelect` ont chacun leur page dédiée
+ * (Core/NavigationList, Core/MenuSelect) — montrés ici composés ensemble
+ * dans un layout de compte. `ScrollAnchor` maintient le scroll calé en bas
+ * d'une zone (ex. fil de messages) tant que l'utilisateur ne remonte pas.
+ */
 const meta = {
   title: "Core/Navigation links",
   component: NavigationCatalog,
@@ -59,45 +66,8 @@ const Catalog: Story = {
   },
 };
 
-const NavigationList: Story = {
-  render: () => <NavigationListComponent className="w-[var(--size-sidebar)]" items={navigationItems} activeHref="/dashboard" label="Navigation principale" />,
-};
-
 const LinkTabs: Story = {
   render: () => <LinkTabsComponent items={tabItems} activeHref="/studios/42/bookings" label="Sections du studio" />,
-};
-
-const MenuSelect: Story = {
-  render: () => <MenuSelectComponent label="Filtrer par studio" options={studioOptions} selectedId="all" onSelect={() => undefined} />,
-};
-
-const sortOptions = [
-  { id: "relevance", label: "Pertinence", href: "#sort=relevance" },
-  { id: "rating", label: "Le mieux noté", href: "#sort=rating" },
-  { id: "price", label: "Prix croissant", href: "#sort=price" },
-  {
-    id: "distance",
-    label: "Distance",
-    href: "#sort=distance",
-    disabled: true,
-    disabledHint: "Active ta position pour trier par distance",
-  },
-] as const;
-
-const MenuSelectSort: Story = {
-  name: "MenuSelect - options en lien (tri de recherche)",
-  render: () => (
-    <MenuSelectComponent
-      label="Trier par"
-      trigger={
-        <>
-          Trier par : <span className="font-semibold text-neutral-900">Pertinence</span>
-        </>
-      }
-      options={sortOptions}
-      selectedId="relevance"
-    />
-  ),
 };
 
 const ScrollAnchor: Story = {
@@ -110,4 +80,4 @@ const ScrollAnchor: Story = {
 };
 
 export default meta;
-export { Catalog, LinkTabs, MenuSelect, MenuSelectSort, NavigationList, ScrollAnchor };
+export { Catalog, LinkTabs, ScrollAnchor };

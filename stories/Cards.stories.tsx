@@ -42,6 +42,14 @@ const CardsCatalog = () => (
   </div>
 );
 
+/**
+ * Famille `Card` : conteneur (`Card`, variantes `default`/`flat`/`elevated`/
+ * `interactive`, padding `none`/`sm`/`md`/`lg`) et sous-composants de
+ * structure — `CardHeader` (titre + description, `layout="row"` pour un
+ * en-tête horizontal), `CardTitle`, `CardDescription`, `CardContent`,
+ * `CardFooter` (`divided` pour un séparateur), `CardMedia` (bandeau image,
+ * `ratio`).
+ */
 const meta = {
   title: "Core/Cards",
   component: CardsCatalog,

@@ -32,6 +32,12 @@ const DashboardOverview = () => (
   </div>
 );
 
+/**
+ * Patterns de tableau de bord studio : `SectionHeader` (titre + action de
+ * page), `KpiCard` (métrique chiffrée + variation `supportingTone`),
+ * `TrendChip` (variation isolée, `direction` up/down), `SummaryLine` (ligne
+ * libellé/valeur d'un récapitulatif financier).
+ */
 const meta = {
   title: "Patterns/Dashboard",
   component: DashboardOverview,
@@ -65,5 +71,25 @@ export const Dashboard = () => (
   },
 };
 
+const KpiCardStory: Story = {
+  name: "KpiCard",
+  render: () => <div className="w-64"><KpiCard label="Revenu net" value="4 280 €" supportingText="+12 %" supportingTone="success" /></div>,
+};
+
+const SectionHeaderStory: Story = {
+  name: "SectionHeader",
+  render: () => <div className="w-[36rem]"><SectionHeader title="Studios recommandés" actionLabel="Tout voir" actionHref="#" /></div>,
+};
+
+const SummaryLineStory: Story = {
+  name: "SummaryLine",
+  render: () => <Card className="w-96 p-5"><SummaryLine label="Total" value="160 €" /></Card>,
+};
+
+const TrendChipStory: Story = {
+  name: "TrendChip",
+  render: () => <TrendChip direction="up" value="+12 %" accessibleLabel="Hausse de 12 pour cent" />,
+};
+
 export default meta;
-export { Overview };
+export { KpiCardStory, Overview, SectionHeaderStory, SummaryLineStory, TrendChipStory };

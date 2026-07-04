@@ -31,6 +31,13 @@ const NavigationCatalog = () => {
   );
 };
 
+/**
+ * Navigation locale et retours d'état : `Tabs` (onglets contrôlés,
+ * `activeId`/`onChange`), `ChoiceChip` (sélection à bascule, `selected` +
+ * `icon` optionnelle), `Progress` (barre de progression, `value` 0-100).
+ * `EmptyState` a sa propre page (Core/EmptyState) — montré ici seulement en
+ * contexte, à la suite d'une recherche sans résultat.
+ */
 const meta = {
   title: "Core/Navigation and states",
   component: NavigationCatalog,
@@ -88,12 +95,5 @@ const ProgressStory: Story = {
   render: () => <div className="w-96"><Progress value={72} label="Profil complété à 72 pour cent" /></div>,
 };
 
-const EmptyStateStory: Story = {
-  name: "EmptyState",
-  render: () => (
-    <div className="w-[32rem]"><EmptyState icon={<IconBox tone="neutral" icon={<SearchIcon />} />} title="Aucun studio trouvé" description="Modifie les filtres de recherche." /></div>
-  ),
-};
-
 export default meta;
-export { Catalog, ChoiceChipStory, EmptyStateStory, ProgressStory, TabsStory };
+export { Catalog, ChoiceChipStory, ProgressStory, TabsStory };

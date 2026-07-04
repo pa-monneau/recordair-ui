@@ -72,6 +72,12 @@ const ModalExample = () => {
   );
 };
 
+/**
+ * États de retour utilisateur : `Alert` (bandeau `tone` info/success/warning/
+ * error), `Modal` (focus contenu, revient au déclencheur à la fermeture),
+ * `Toast` (notification éphémère, `variant` + `onClose`), `Spinner` et
+ * `Skeleton` (chargement).
+ */
 const meta = {
   title: "Core/Feedback",
   component: FeedbackCatalog,

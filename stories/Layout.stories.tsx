@@ -9,6 +9,9 @@ const LayoutCatalog = () => (
   </div>
 );
 
+/**
+ * `Divider` : séparateur horizontal fin entre deux sections de contenu.
+ */
 const meta = {
   title: "Core/Layout",
   component: LayoutCatalog,

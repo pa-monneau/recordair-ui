@@ -5,7 +5,8 @@ import {
   AuthVisualPanel as AuthVisualPanelComponent,
   MobileNavigation as MobileNavigationComponent,
   PageHeader as PageHeaderComponent,
-  RecordairLogo,
+  RecordairLogo as RecordairLogoComponent,
+  RecordairMark as RecordairMarkComponent,
   SiteHeader as SiteHeaderComponent,
 } from "@recordair/ui-patterns";
 
@@ -27,7 +28,7 @@ const ShellCatalog = () => (
     <SiteHeaderComponent
       sticky={false}
       contained
-      brand={<RecordairLogo href="#" size="sm" />}
+      brand={<RecordairLogoComponent href="#" size="sm" />}
       navigation={<LinkTabs items={headerTabs} activeHref="/studios/42" label="Navigation principale" />}
       actions={<><IconButton icon={<BellIcon className="size-5" />} label="Notifications" /><Button size="sm">Publier un studio</Button></>}
     />
@@ -43,6 +44,14 @@ const ShellCatalog = () => (
   </div>
 );
 
+/**
+ * Chrome applicatif : `SiteHeader` (en-tête global, `brand`/`navigation`/
+ * `actions`), `PageHeader` (en-tête de page avec retour + navigation
+ * secondaire), `MobileNavigation` (menu hamburger, base = `NavigationList`),
+ * `AuthVisualPanel` (panneau visuel des pages d'auth). `RecordairLogo`
+ * (`size`, `href`) et `RecordairMark` (icône seule) sont montrés composés
+ * dans `SiteHeader` et ont chacun leur story isolée plus bas.
+ */
 const meta = {
   title: "Patterns/Shells and navigation",
   component: ShellCatalog,
@@ -67,7 +76,7 @@ const SiteHeader: Story = {
     <SiteHeaderComponent
       sticky={false}
       contained
-      brand={<RecordairLogo href="#" size="sm" />}
+      brand={<RecordairLogoComponent href="#" size="sm" />}
       actions={<Button size="sm">Se connecter</Button>}
     />
   ),
@@ -102,5 +111,13 @@ const AuthVisualPanel: Story = {
   ),
 };
 
+const RecordairLogo: Story = {
+  render: () => <RecordairLogoComponent href="#" />,
+};
+
+const RecordairMark: Story = {
+  render: () => <RecordairMarkComponent />,
+};
+
 export default meta;
-export { AuthVisualPanel, Catalog, MobileNavigation, PageHeader, SiteHeader };
+export { AuthVisualPanel, Catalog, MobileNavigation, PageHeader, RecordairLogo, RecordairMark, SiteHeader };

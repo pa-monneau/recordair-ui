@@ -1,13 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { ChoiceChip, KeyValue } from "@recordair/ui-core";
+import { ChoiceChip, Input, KeyValue } from "@recordair/ui-core";
 import { CircleHelpIcon } from "@recordair/ui-core/icons";
 import {
+  BookingChip as BookingChipComponent,
   BookingField as BookingFieldComponent,
   DetailCard as DetailCardComponent,
   EmbeddedBookingCard as EmbeddedBookingCardComponent,
   ErrorState as ErrorStateComponent,
   FormCard as FormCardComponent,
+  FormRow as FormRowComponent,
   Metric as MetricComponent,
+  ProfileSectionCard as ProfileSectionCardComponent,
 } from "@recordair/ui-patterns";
 
 const ContentPatternsCatalog = () => (
@@ -36,6 +39,14 @@ const ContentPatternsCatalog = () => (
   </div>
 );
 
+/**
+ * Contenu et réservation : `BookingChip` (créneau horaire sélectionnable),
+ * `BookingField` (ligne de formulaire de réservation), `FormRow`/`FormCard`
+ * (structure de formulaire générique), `ProfileSectionCard` (section de
+ * profil), `DetailCard` (récapitulatif clé/valeur), `EmbeddedBookingCard`
+ * (réservation liée dans un fil de messages), `ErrorState` (page d'erreur),
+ * `Metric` (indicateur chiffré compact).
+ */
 const meta = {
   title: "Patterns/Content and booking",
   component: ContentPatternsCatalog,
@@ -53,6 +64,10 @@ import { BookingField, DetailCard, EmbeddedBookingCard, FormCard, Metric } from 
       },
     },
   },
+};
+
+const BookingChip: Story = {
+  render: () => <BookingChipComponent active>14:00</BookingChipComponent>,
 };
 
 const BookingField: Story = {
@@ -75,9 +90,34 @@ const FormCard: Story = {
   render: () => <div className="w-full max-w-content-md"><FormCardComponent title="Informations" subtitle="Données visibles publiquement."><div className="py-5">Contenu du formulaire</div></FormCardComponent></div>,
 };
 
+const FormRow: Story = {
+  render: () => <div className="w-[44rem]"><FormRowComponent label="Nom public" htmlFor="pattern-name" last><Input id="pattern-name" /></FormRowComponent></div>,
+};
+
 const Metric: Story = {
   render: () => <MetricComponent label="Revenu net" value="4 280 €" supportingText="Ce mois-ci" />,
 };
 
+const ProfileSectionCard: Story = {
+  render: () => (
+    <div className="w-[40rem]">
+      <ProfileSectionCardComponent title="Informations" subtitle="Données visibles publiquement.">
+        <FormRowComponent label="Nom" htmlFor="profile-name" last><Input id="profile-name" /></FormRowComponent>
+      </ProfileSectionCardComponent>
+    </div>
+  ),
+};
+
 export default meta;
-export { BookingField, Catalog, DetailCard, EmbeddedBookingCard, ErrorState, FormCard, Metric };
+export {
+  BookingChip,
+  BookingField,
+  Catalog,
+  DetailCard,
+  EmbeddedBookingCard,
+  ErrorState,
+  FormCard,
+  FormRow,
+  Metric,
+  ProfileSectionCard,
+};

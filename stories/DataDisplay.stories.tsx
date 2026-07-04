@@ -24,6 +24,12 @@ const DataDisplayCatalog = () => (
   </div>
 );
 
+/**
+ * Composants de présentation de contenu et de données : `Accordion` (FAQ,
+ * `defaultOpenIds`), `KeyValue` (paire libellé/valeur dans une `<dl>`),
+ * `RatingStars` (note en étoiles, `value`/`size`), `ContentBlock` (bloc
+ * éditorial typé — `callout` avec `tone`, entre autres variantes).
+ */
 const meta = {
   title: "Core/Data display",
   component: DataDisplayCatalog,

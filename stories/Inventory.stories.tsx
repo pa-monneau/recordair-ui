@@ -101,6 +101,14 @@ const SourceInventory = ({ initialStatus = "all" }: SourceInventoryProps) => {
   );
 };
 
+/**
+ * Audit des composants source du produit Record'air (`airstudio/airstudio`,
+ * snapshot du 20 juin 2026 — voir `docs/MIGRATION_INVENTORY.md`), filtrable
+ * par domaine et par statut de migration : **Extrait** (déjà dans le design
+ * system, colonne "Export DS" = remplacement), **Candidat DS** (frontière
+ * réutilisable identifiée, pas encore extrait) ou **Couplé produit**
+ * (dépend de Next.js/Supabase/paiement, reste dans l'app par design).
+ */
 const meta = {
   title: "Inventory/Record'air source",
   component: SourceInventory,

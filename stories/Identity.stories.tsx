@@ -10,6 +10,12 @@ const IdentityCatalog = () => (
   </div>
 );
 
+/**
+ * Identité visuelle d'une personne ou d'un studio : `Avatar` (initiales de
+ * repli si pas d'image, `size`), `IconBox` (icône encadrée, `tone`). `Badge`
+ * a sa propre page (Core/Badge) — montré ici seulement en contexte, à côté
+ * d'un avatar.
+ */
 const meta = {
   title: "Core/Identity",
   component: IdentityCatalog,
@@ -37,8 +43,7 @@ export const IdentityExample = () => (
   },
 };
 const AvatarStory: Story = { name: "Avatar", render: () => <Avatar name="Camille Dupont" size="lg" /> };
-const BadgeStory: Story = { name: "Badge", render: () => <Badge tone="success" dot>Disponible</Badge> };
 const IconBoxStory: Story = { name: "IconBox", render: () => <IconBox tone="brand" icon={<AudioLinesIcon />} /> };
 
 export default meta;
-export { AvatarStory, BadgeStory, Catalog, IconBoxStory };
+export { AvatarStory, Catalog, IconBoxStory };

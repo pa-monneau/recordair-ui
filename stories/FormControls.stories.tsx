@@ -48,6 +48,13 @@ const FormControlsCatalog = () => (
   </form>
 );
 
+/**
+ * Contrôles de formulaire, toujours enveloppés dans `Field` (label + hint +
+ * erreur) sauf `SearchInput`, `NativeSelect`, `Checkbox`, `Radio` et `Toggle`
+ * qui gèrent leur propre libellé. `Select` est le picker stylé maison,
+ * `NativeSelect` garde le `<select>` natif (menu système, meilleure
+ * accessibilité mobile).
+ */
 const meta = {
   title: "Core/Form controls",
   component: FormControlsCatalog,

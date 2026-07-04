@@ -30,10 +30,55 @@ const ButtonCatalog = () => (
   </div>
 );
 
+/**
+ * Bouton d'action principal. Variantes neutres (`primary`/`secondary`/
+ * `ghost`/`soft`/`danger`) et variantes par rôle (`artist`/`studio`/`pro`,
+ * dégradé + ombre tokenisés par rôle). Famille `Button` : `LinkButton` (lien
+ * stylé bouton), `IconButton` (icône seule, page dédiée Core/IconButton),
+ * `SubmitButton` (état `pending` de formulaire) et `ButtonGroup` (regroupement
+ * visuel de plusieurs boutons).
+ */
 const meta = {
   title: "Core/Button",
   component: Button,
   tags: ["autodocs"],
+  argTypes: {
+    variant: {
+      description: "Palette : neutres (`primary`/`secondary`/`ghost`/`soft`/`danger`) ou par rôle (`artist`/`studio`/`pro`).",
+      control: "select",
+      options: ["primary", "secondary", "ghost", "soft", "danger", "artist", "studio", "pro"],
+    },
+    size: {
+      description: "Hauteur et padding.",
+      control: "radio",
+      options: ["sm", "md", "lg"],
+    },
+    shape: {
+      description: "Coins arrondis (`default`) ou capsule complète (`pill`).",
+      control: "radio",
+      options: ["default", "pill"],
+    },
+    block: {
+      description: "Occupe toute la largeur du conteneur.",
+      control: "boolean",
+    },
+    leadingIcon: {
+      description: "Icône avant le texte.",
+      control: false,
+    },
+    trailingIcon: {
+      description: "Icône après le texte.",
+      control: false,
+    },
+    loading: {
+      description: "État de chargement : remplace le contenu par `loadingLabel` et désactive le bouton.",
+      control: "boolean",
+    },
+    loadingLabel: {
+      description: "Texte affiché pendant `loading` (annoncé aux lecteurs d'écran).",
+      control: "text",
+    },
+  },
   args: {
     children: "Continuer",
   },
@@ -92,11 +137,6 @@ const Catalog: Story = {
   render: () => <ButtonCatalog />,
 };
 
-const IconButtonStory: Story = {
-  name: "IconButton",
-  render: () => <IconButton label="Ajouter aux favoris" icon={<HeartIcon className="size-4" />} variant="secondary" />,
-};
-
 const LinkButtonStory: Story = {
   name: "LinkButton",
   render: () => <LinkButton href="#" trailingIcon={<ArrowRightIcon className="size-4" />}>Voir le studio</LinkButton>,
@@ -118,7 +158,6 @@ export {
   Catalog,
   Danger,
   Ghost,
-  IconButtonStory,
   LinkButtonStory,
   Loading,
   Primary,

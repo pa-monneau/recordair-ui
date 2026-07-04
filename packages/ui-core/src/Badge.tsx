@@ -2,7 +2,7 @@ import type { HTMLAttributes, ReactNode } from "react";
 import { classNames } from "./classNames";
 
 type BadgeTone = "neutral" | "brand" | "success" | "error" | "warning" | "info";
-type BadgeSize = "sm" | "md";
+type BadgeSize = "xs" | "sm" | "md";
 
 type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
   tone?: BadgeTone;
@@ -22,6 +22,8 @@ const toneClasses: Record<BadgeTone, string> = {
 };
 
 const sizeClasses: Record<BadgeSize, string> = {
+  // Pastille de statut compacte (ex. réservation confirmée/en attente).
+  xs: "gap-1 px-2.5 py-1 text-[10px] uppercase",
   sm: "gap-1 px-2 py-0.5 text-xs",
   md: "gap-2 px-3 py-1 text-label",
 };

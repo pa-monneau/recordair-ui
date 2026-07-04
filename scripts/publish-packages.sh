@@ -164,7 +164,7 @@ while IFS= read -r package_json; do
     continue
   fi
 
-  npm publish "$package_dir" --access public --tag "$TAG"
+  npm publish "./${package_dir}" --access public --tag "$TAG"
   published_count=$((published_count + 1))
 done < <(find packages -mindepth 2 -maxdepth 2 -name package.json | sort)
 

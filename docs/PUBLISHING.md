@@ -53,9 +53,6 @@ npm, ou Trusted Publishing OIDC.
 
 Options :
 
-- **Session locale `npm login`** : simple pour un poste de dev, mais peut
-  redemander du 2FA selon la configuration du compte ou du package.
-  Reversible facilement avec `npm logout`.
 - **Token npm granulaire avec write + Bypass 2FA** : automatise le publish local
   via `NPM_TOKEN` ou le Keychain macOS (`recordair-npm-token`). Reversible en
   revoquant le token ou en supprimant l'entree Keychain. Risque principal :
@@ -69,3 +66,7 @@ Options :
 Reco : pour publier depuis ton Mac aujourd'hui, token granulaire limite et
 expire est acceptable. Pour automatiser durablement sans 2FA navigateur, je
 prendrais Trusted Publishing OIDC avec un workflow GitHub tag-based ou manuel.
+
+Le script refuse volontairement de retomber sur une session `npm login` locale :
+si le token Keychain est absent ou mauvais, il doit echouer avant publication
+plutot que declencher une authentification navigateur.

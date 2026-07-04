@@ -12,6 +12,7 @@ SKIP_VERIFY=false
 TAG="latest"
 KEYCHAIN_SERVICE="${NPM_TOKEN_KEYCHAIN_SERVICE:-recordair-npm-token}"
 NO_BUMP=false
+NPM_AUTH_SOURCE=""
 
 usage() {
   cat <<'EOF'
@@ -32,7 +33,6 @@ Options:
   -h, --help        Affiche cette aide.
 
 Auth:
-  - Session locale npm: npm login, puis ce script.
   - Token automation: NPM_TOKEN=... npm run release:publish -- patch --yes
   - Keychain macOS: service recordair-npm-token lu si NPM_TOKEN est absent.
 
@@ -121,9 +121,14 @@ if [[ "$YES" == false ]]; then
   [[ "$answer" == "y" || "$answer" == "Y" ]] || die "publish annule"
 fi
 
-if [[ -z "${NPM_TOKEN:-}" ]] && command -v security >/dev/null 2>&1; then
+if [[ -n "${NPM_TOKEN:-}" ]]; then
+  NPM_AUTH_SOURCE="NPM_TOKEN"
+elif command -v security >/dev/null 2>&1; then
   NPM_TOKEN="$(security find-generic-password -a "$USER" -s "$KEYCHAIN_SERVICE" -w 2>/dev/null || true)"
+  [[ -n "${NPM_TOKEN:-}" ]] && NPM_AUTH_SOURCE="Keychain:$KEYCHAIN_SERVICE"
 fi
+
+[[ -n "${NPM_TOKEN:-}" ]] || die "token npm introuvable. Definis NPM_TOKEN ou stocke le token dans le Keychain ($KEYCHAIN_SERVICE)."
 
 if [[ -n "${NPM_TOKEN:-}" ]]; then
   TMP_NPMRC="$(mktemp)"
@@ -134,8 +139,11 @@ if [[ -n "${NPM_TOKEN:-}" ]]; then
 fi
 
 if ! npm whoami >/dev/null 2>&1; then
-  die "auth npm introuvable. Connecte-toi avec npm login ou stocke le token dans le Keychain ($KEYCHAIN_SERVICE)."
+  die "token npm invalide ou non autorise. Remplace NPM_TOKEN ou le token Keychain ($KEYCHAIN_SERVICE)."
 fi
+
+echo "Auth npm: $NPM_AUTH_SOURCE"
+echo
 
 if [[ "$NO_BUMP" == false ]]; then
   npm version "$BUMP" --workspaces --include-workspace-root --no-git-tag-version

@@ -40,8 +40,10 @@ Le script :
 - lance `npm run typecheck` puis `npm run build` ;
 - verifie l'auth npm avant de bump une nouvelle version ;
 - bump le workspace root et tous les packages avec `npm version --workspaces`;
-- verifie que les versions n'existent pas deja sur npm ;
-- fait un `npm pack --workspaces --dry-run` avant `npm publish --workspaces`.
+- saute les versions deja presentes sur npm pour reprendre une publication
+  partielle ;
+- fait un `npm pack --workspaces --dry-run` avant de publier les packages
+  manquants.
 
 ## Auth npm
 

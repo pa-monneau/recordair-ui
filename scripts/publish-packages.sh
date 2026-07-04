@@ -148,17 +148,25 @@ echo "Versions a publier:"
 npm pkg get name version --workspaces
 echo
 
+npm pack --cache .npm-cache --workspaces --dry-run
+
+published_count=0
+skipped_count=0
+
 while IFS= read -r package_json; do
+  package_dir="$(dirname "$package_json")"
   package_name="$(node -p "require('./${package_json}').name")"
   package_version="$(node -p "require('./${package_json}').version")"
 
   if npm view "${package_name}@${package_version}" version >/dev/null 2>&1; then
-    die "${package_name}@${package_version} existe deja sur npm."
+    echo "Skip: ${package_name}@${package_version} existe deja sur npm."
+    skipped_count=$((skipped_count + 1))
+    continue
   fi
+
+  npm publish "$package_dir" --access public --tag "$TAG"
+  published_count=$((published_count + 1))
 done < <(find packages -mindepth 2 -maxdepth 2 -name package.json | sort)
 
-npm pack --cache .npm-cache --workspaces --dry-run
-npm publish --workspaces --access public --tag "$TAG"
-
 echo
-echo "Publication terminee."
+echo "Publication terminee: ${published_count} publie(s), ${skipped_count} deja present(s)."

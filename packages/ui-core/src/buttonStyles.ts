@@ -17,6 +17,12 @@ type ButtonStyleOptions = {
   size?: ButtonSize;
   shape?: ButtonShape;
   block?: boolean;
+  /**
+   * Carré icône seule (`size-X`, sans padding horizontal) au lieu de la
+   * largeur "texte" (`h-X px-Y`) — les deux ne peuvent pas coexister sans
+   * conflit d'utilitaires Tailwind (pas de merge à la `tailwind-merge` ici).
+   */
+  iconOnly?: boolean;
   className?: string;
 };
 
@@ -24,6 +30,12 @@ const sizeClasses: Record<ButtonSize, string> = {
   sm: "h-[var(--size-btn-sm)] px-4 text-sm",
   md: "h-[var(--size-btn-md)] px-5 text-sm",
   lg: "h-[var(--size-btn-lg)] px-6 text-base",
+};
+
+const iconOnlySizeClasses: Record<ButtonSize, string> = {
+  sm: "size-[var(--size-btn-sm)] p-0",
+  md: "size-[var(--size-btn-md)] p-0",
+  lg: "size-[var(--size-btn-lg)] p-0",
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
@@ -47,12 +59,13 @@ const buttonClassName = ({
   size = "md",
   shape = "default",
   block = false,
+  iconOnly = false,
   className,
 }: ButtonStyleOptions): string =>
   classNames(
     "inline-flex items-center justify-center gap-2 font-semibold transition focus-visible:outline-none focus-visible:shadow-focus disabled:cursor-not-allowed disabled:opacity-60",
     shape === "pill" ? "rounded-full" : "rounded-md",
-    sizeClasses[size],
+    iconOnly ? iconOnlySizeClasses[size] : sizeClasses[size],
     variantClasses[variant],
     block && "w-full",
     className,

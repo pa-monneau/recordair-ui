@@ -71,6 +71,35 @@ const MenuSelect: Story = {
   render: () => <MenuSelectComponent label="Filtrer par studio" options={studioOptions} selectedId="all" onSelect={() => undefined} />,
 };
 
+const sortOptions = [
+  { id: "relevance", label: "Pertinence", href: "#sort=relevance" },
+  { id: "rating", label: "Le mieux noté", href: "#sort=rating" },
+  { id: "price", label: "Prix croissant", href: "#sort=price" },
+  {
+    id: "distance",
+    label: "Distance",
+    href: "#sort=distance",
+    disabled: true,
+    disabledHint: "Active ta position pour trier par distance",
+  },
+] as const;
+
+const MenuSelectSort: Story = {
+  name: "MenuSelect - options en lien (tri de recherche)",
+  render: () => (
+    <MenuSelectComponent
+      label="Trier par"
+      trigger={
+        <>
+          Trier par : <span className="font-semibold text-neutral-900">Pertinence</span>
+        </>
+      }
+      options={sortOptions}
+      selectedId="relevance"
+    />
+  ),
+};
+
 const ScrollAnchor: Story = {
   render: () => (
     <div className="max-h-48 w-[var(--container-content-sm)] overflow-auto rounded-lg border border-neutral-200 bg-neutral-0 p-4">
@@ -81,4 +110,4 @@ const ScrollAnchor: Story = {
 };
 
 export default meta;
-export { Catalog, LinkTabs, MenuSelect, NavigationList, ScrollAnchor };
+export { Catalog, LinkTabs, MenuSelect, MenuSelectSort, NavigationList, ScrollAnchor };

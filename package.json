@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "storybook": "npm run build && storybook dev -p 6006 --no-open",
     "build-storybook": "npm run build && storybook build",
-    "pack:dry-run": "npm pack --cache .npm-cache --workspaces --dry-run"
+    "pack:dry-run": "npm pack --cache .npm-cache --workspaces --dry-run",
+    "release:publish": "bash scripts/publish-packages.sh"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^10.0.0",

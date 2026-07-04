@@ -50,6 +50,7 @@ export {
   Search as SearchIcon,
   Settings as SettingsIcon,
   ShieldCheck as ShieldCheckIcon,
+  ShoppingCart as ShoppingCartIcon,
   Signal as SignalIcon,
   SlidersHorizontal as SlidersHorizontalIcon,
   SlidersVertical as SlidersVerticalIcon,

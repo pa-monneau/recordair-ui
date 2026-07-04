@@ -21,10 +21,24 @@ prepare :
 NPM_TOKEN=... npm run release:publish -- patch --yes
 ```
 
+Si le token npm est stocke dans le Keychain macOS sous
+`recordair-npm-token`, le script le lit automatiquement :
+
+```bash
+npm run release:publish -- patch --yes
+```
+
+Reprendre une publication interrompue apres un bump deja applique :
+
+```bash
+npm run release:publish -- --no-bump --yes
+```
+
 Le script :
 
 - refuse par defaut de publier depuis un worktree sale ;
 - lance `npm run typecheck` puis `npm run build` ;
+- verifie l'auth npm avant de bump une nouvelle version ;
 - bump le workspace root et tous les packages avec `npm version --workspaces`;
 - verifie que les versions n'existent pas deja sur npm ;
 - fait un `npm pack --workspaces --dry-run` avant `npm publish --workspaces`.
@@ -41,7 +55,8 @@ Options :
   redemander du 2FA selon la configuration du compte ou du package.
   Reversible facilement avec `npm logout`.
 - **Token npm granulaire avec write + Bypass 2FA** : automatise le publish local
-  via `NPM_TOKEN`. Reversible en revoquant le token. Risque principal :
+  via `NPM_TOKEN` ou le Keychain macOS (`recordair-npm-token`). Reversible en
+  revoquant le token ou en supprimant l'entree Keychain. Risque principal :
   credential long-lived, donc ne jamais le versionner et preferer une expiration
   courte + scope limite aux packages `@recordair/*`.
 - **Trusted Publishing OIDC via GitHub Actions** : meilleur choix long terme.

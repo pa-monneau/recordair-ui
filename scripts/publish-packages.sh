@@ -10,6 +10,8 @@ YES=false
 ALLOW_DIRTY=false
 SKIP_VERIFY=false
 TAG="latest"
+KEYCHAIN_SERVICE="${NPM_TOKEN_KEYCHAIN_SERVICE:-recordair-npm-token}"
+NO_BUMP=false
 
 usage() {
   cat <<'EOF'
@@ -24,6 +26,7 @@ Options:
   --tag <tag>       Dist-tag npm a publier. Defaut: latest.
   --dry-run         Verifie build + contenu des packages sans bump ni publish.
   --yes             Ne demande pas de confirmation avant le publish.
+  --no-bump         Publie les versions actuelles sans les incrementer.
   --allow-dirty     Autorise une release depuis un worktree deja modifie.
   --skip-verify     Saute typecheck/build. A eviter hors urgence.
   -h, --help        Affiche cette aide.
@@ -31,6 +34,7 @@ Options:
 Auth:
   - Session locale npm: npm login, puis ce script.
   - Token automation: NPM_TOKEN=... npm run release:publish -- patch --yes
+  - Keychain macOS: service recordair-npm-token lu si NPM_TOKEN est absent.
 
 Le token doit rester hors git.
 EOF
@@ -56,6 +60,9 @@ while [[ $# -gt 0 ]]; do
       ;;
     --yes|-y)
       YES=true
+      ;;
+    --no-bump)
+      NO_BUMP=true
       ;;
     --allow-dirty)
       ALLOW_DIRTY=true
@@ -89,16 +96,8 @@ esac
 [[ -f package-lock.json ]] || die "package-lock.json introuvable"
 [[ -d packages ]] || die "dossier packages introuvable"
 
-if [[ "$DRY_RUN" == false && "$ALLOW_DIRTY" == false ]] && [[ -n "$(git status --porcelain)" ]]; then
+if [[ "$DRY_RUN" == false && "$NO_BUMP" == false && "$ALLOW_DIRTY" == false ]] && [[ -n "$(git status --porcelain)" ]]; then
   die "worktree sale. Commit/stash les changements ou ajoute --allow-dirty."
-fi
-
-if [[ -n "${NPM_TOKEN:-}" ]]; then
-  TMP_NPMRC="$(mktemp)"
-  trap 'rm -f "$TMP_NPMRC"' EXIT
-  [[ -f .npmrc ]] && cat .npmrc > "$TMP_NPMRC"
-  printf '//registry.npmjs.org/:_authToken=%s\n' "$NPM_TOKEN" >> "$TMP_NPMRC"
-  export NPM_CONFIG_USERCONFIG="$TMP_NPMRC"
 fi
 
 echo "Packages a publier:"
@@ -122,10 +121,30 @@ if [[ "$YES" == false ]]; then
   [[ "$answer" == "y" || "$answer" == "Y" ]] || die "publish annule"
 fi
 
-npm version "$BUMP" --workspaces --include-workspace-root --no-git-tag-version
+if [[ -z "${NPM_TOKEN:-}" ]] && command -v security >/dev/null 2>&1; then
+  NPM_TOKEN="$(security find-generic-password -a "$USER" -s "$KEYCHAIN_SERVICE" -w 2>/dev/null || true)"
+fi
+
+if [[ -n "${NPM_TOKEN:-}" ]]; then
+  TMP_NPMRC="$(mktemp)"
+  trap 'rm -f "$TMP_NPMRC"' EXIT
+  [[ -f .npmrc ]] && cat .npmrc > "$TMP_NPMRC"
+  printf '//registry.npmjs.org/:_authToken=%s\n' "$NPM_TOKEN" >> "$TMP_NPMRC"
+  export NPM_CONFIG_USERCONFIG="$TMP_NPMRC"
+fi
+
+if ! npm whoami >/dev/null 2>&1; then
+  die "auth npm introuvable. Connecte-toi avec npm login ou stocke le token dans le Keychain ($KEYCHAIN_SERVICE)."
+fi
+
+if [[ "$NO_BUMP" == false ]]; then
+  npm version "$BUMP" --workspaces --include-workspace-root --no-git-tag-version
+else
+  echo "Bump ignore: publication des versions actuelles."
+fi
 
 echo
-echo "Versions apres bump:"
+echo "Versions a publier:"
 npm pkg get name version --workspaces
 echo
 

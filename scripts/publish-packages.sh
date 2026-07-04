@@ -136,6 +136,7 @@ if [[ -n "${NPM_TOKEN:-}" ]]; then
   [[ -f .npmrc ]] && cat .npmrc > "$TMP_NPMRC"
   printf '//registry.npmjs.org/:_authToken=%s\n' "$NPM_TOKEN" >> "$TMP_NPMRC"
   export NPM_CONFIG_USERCONFIG="$TMP_NPMRC"
+  export npm_config_userconfig="$TMP_NPMRC"
 fi
 
 if ! npm whoami >/dev/null 2>&1; then

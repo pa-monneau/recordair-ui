@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Card, Input } from "@recordair/ui-core";
-import { MicIcon } from "@recordair/ui-core/icons";
+import { Card, Input, SuggestionList, SuggestionListItem } from "@recordair/ui-core";
+import { HouseIcon, MapPinIcon, MicIcon } from "@recordair/ui-core/icons";
 import {
   BookingChip,
   BookingCard,
@@ -170,6 +170,32 @@ const StudioCardStory: Story = {
   render: () => <div className="w-96"><StudioCard studio={{ name: "Studio République", location: "Lille Centre", type: "Enregistrement", rating: "4,9", reviews: 38, tags: ["Voix", "Mixage", "Podcast"], priceLabel: "80 €", rateSuffix: "par heure", gradient: "studio", href: "#", ratingAriaLabel: "Note de 4,9 sur 5" }} /></div>,
 };
 
+const SuggestionListStory: Story = {
+  name: "SuggestionList",
+  render: () => (
+    <div className="w-96">
+      <SuggestionList heading="Suggestions de destinations">
+        <SuggestionListItem
+          tone="brand"
+          icon={<MapPinIcon />}
+          title="À proximité"
+          subtitle="Découvre les studios autour de toi"
+        />
+        <SuggestionListItem
+          icon={<HouseIcon />}
+          title="Lille"
+          subtitle="Nord, Hauts-de-France"
+        />
+        <SuggestionListItem
+          icon={<HouseIcon />}
+          title="Lyon"
+          subtitle="Rhône, Auvergne-Rhône-Alpes"
+        />
+      </SuggestionList>
+    </div>
+  ),
+};
+
 const SummaryLineStory: Story = { name: "SummaryLine", render: () => <Card className="w-96 p-5"><SummaryLine label="Total" value="160 €" /></Card> };
 const TrendChipStory: Story = { name: "TrendChip", render: () => <TrendChip direction="up" value="+12 %" accessibleLabel="Hausse de 12 pour cent" /> };
 
@@ -192,6 +218,7 @@ export {
   StatusPillStory,
   StepperStory,
   StudioCardStory,
+  SuggestionListStory,
   SummaryLineStory,
   TrendChipStory,
 };

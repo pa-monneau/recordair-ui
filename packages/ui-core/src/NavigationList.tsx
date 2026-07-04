@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ElementType, ReactNode } from "react";
 import { classNames } from "./classNames";
 
 type NavigationListTone = "brand" | "inverted";
@@ -16,6 +16,11 @@ type NavigationListProps = {
   activeHref?: string;
   label: string;
   tone?: NavigationListTone;
+  /**
+   * Composant de lien à utiliser à la place de `<a>` (ex. le `Link`
+   * localisé d'un routeur applicatif). Même convention que `RecordairLogo`.
+   */
+  as?: ElementType;
   className?: string;
 };
 
@@ -34,6 +39,7 @@ const NavigationList = ({
   activeHref,
   label,
   tone = "brand",
+  as: LinkComponent = "a",
   className,
 }: NavigationListProps) => (
   <nav aria-label={label} className={classNames("flex flex-col gap-1", className)}>
@@ -48,7 +54,7 @@ const NavigationList = ({
       );
 
       return (
-        <a
+        <LinkComponent
           key={item.href}
           href={item.href}
           aria-current={active ? "page" : undefined}
@@ -66,7 +72,7 @@ const NavigationList = ({
               {item.badge}
             </span>
           ) : null}
-        </a>
+        </LinkComponent>
       );
     })}
   </nav>

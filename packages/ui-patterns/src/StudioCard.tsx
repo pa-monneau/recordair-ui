@@ -1,4 +1,4 @@
-import type { ComponentType } from "react";
+import type { AnchorHTMLAttributes, ComponentType, ElementType } from "react";
 import { Badge, Card, CardContent, CardMedia, IconBox } from "@recordair/ui-core";
 import { MicIcon, StarIcon, type IconProps } from "@recordair/ui-core/icons";
 
@@ -19,10 +19,12 @@ type StudioCardData = {
   ratingAriaLabel?: string;
 };
 
-type StudioCardProps = {
+type StudioCardProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href" | "className"> & {
   studio: StudioCardData;
   className?: string;
   Icon?: ComponentType<IconProps>;
+  /** Composant de lien à la place de `<a>` (ex. le `Link` localisé d'un routeur applicatif). */
+  as?: ElementType;
 };
 
 const gradientClasses: Record<StudioCardGradient, string> = {
@@ -36,10 +38,13 @@ const StudioCard = ({
   studio,
   className,
   Icon = MicIcon,
+  as: LinkComponent = "a",
+  ...rest
 }: StudioCardProps) => (
-  <a
+  <LinkComponent
     href={studio.href}
     className="block h-full"
+    {...rest}
   >
     <Card variant="interactive" padding="none" className={className}>
     <CardMedia
@@ -101,7 +106,7 @@ const StudioCard = ({
       </span>
     </CardContent>
     </Card>
-  </a>
+  </LinkComponent>
 );
 
 export { StudioCard };

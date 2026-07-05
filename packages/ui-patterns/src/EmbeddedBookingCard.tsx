@@ -1,3 +1,4 @@
+import type { ElementType } from "react";
 import { Card, CardContent, CardMedia, LinkButton } from "@recordair/ui-core";
 
 type EmbeddedBookingCardProps = {
@@ -8,6 +9,8 @@ type EmbeddedBookingCardProps = {
   metadata: string;
   actionLabel: string;
   actionHref: string;
+  /** Composant de lien du CTA (ex. le `Link` localisé d'un routeur applicatif). */
+  as?: ElementType;
 };
 
 const EmbeddedBookingCard = ({
@@ -18,6 +21,7 @@ const EmbeddedBookingCard = ({
   metadata,
   actionLabel,
   actionHref,
+  as,
 }: EmbeddedBookingCardProps) => (
   <Card
     as="article"
@@ -34,7 +38,7 @@ const EmbeddedBookingCard = ({
       <span className="text-overline font-semibold uppercase tracking-wide text-neutral-500">{eyebrow}</span>
       <h3 className="text-sm font-semibold text-neutral-900">{title}</h3>
       <p className="text-caption text-neutral-500">{metadata}</p>
-      <LinkButton href={actionHref} size="sm" className="mt-2">{actionLabel}</LinkButton>
+      <LinkButton as={as} href={actionHref} size="sm" className="mt-2">{actionLabel}</LinkButton>
     </CardContent>
   </Card>
 );

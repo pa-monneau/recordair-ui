@@ -1,3 +1,4 @@
+import type { ElementType } from "react";
 import { AudioLinesIcon, ClockIcon } from "@recordair/ui-core/icons";
 import { Badge, Card, IconBox, LinkButton } from "@recordair/ui-core";
 
@@ -22,6 +23,8 @@ type BookingCardData = {
 type BookingCardProps = {
   booking: BookingCardData;
   detailsLabel: string;
+  /** Composant de lien du CTA "détails" (ex. le `Link` localisé d'un routeur applicatif). */
+  as?: ElementType;
 };
 
 const statusTones: Record<BookingStatus, "success" | "warning" | "neutral" | "error"> = {
@@ -32,7 +35,7 @@ const statusTones: Record<BookingStatus, "success" | "warning" | "neutral" | "er
   cancelled: "error",
 };
 
-const BookingCard = ({ booking, detailsLabel }: BookingCardProps) => (
+const BookingCard = ({ booking, detailsLabel, as }: BookingCardProps) => (
   <Card as="article" padding="sm" className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
     <div className="flex min-w-0 flex-1 items-center gap-4">
       <IconBox tone="brand" icon={<AudioLinesIcon />} className="size-12 [&_svg]:size-6" />
@@ -55,6 +58,7 @@ const BookingCard = ({ booking, detailsLabel }: BookingCardProps) => (
       </div>
     </div>
     <LinkButton
+      as={as}
       href={booking.href}
       variant="secondary"
       size="sm"

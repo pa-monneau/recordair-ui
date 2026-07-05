@@ -1,3 +1,4 @@
+import type { ElementType } from "react";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -19,6 +20,12 @@ type PaginationProps = {
   totalResults: number;
   hrefForPage: (page: number) => string;
   labels: PaginationLabels;
+  /**
+   * Composant de lien pour les pages naviguables (ex. le `Link` localisé d'un
+   * routeur applicatif). Les boutons désactivés (bord de pagination, sans
+   * `href`) restent en `<a>` natif quel que soit ce prop.
+   */
+  as?: ElementType;
 };
 
 const buildPageList = (current: number, total: number): Array<number | "ellipsis"> => {
@@ -53,6 +60,7 @@ const Pagination = ({
   totalResults,
   hrefForPage,
   labels,
+  as,
 }: PaginationProps) => {
   const pages = buildPageList(currentPage, totalPages);
 
@@ -60,6 +68,7 @@ const Pagination = ({
     <div className="flex flex-col items-center gap-2 py-6">
       <nav aria-label={labels.navigation} className="flex items-center gap-1">
         <LinkButton
+          as={currentPage > 1 ? as : undefined}
           href={currentPage > 1 ? hrefForPage(currentPage - 1) : undefined}
           aria-label={labels.previous}
           aria-disabled={currentPage === 1}
@@ -82,6 +91,7 @@ const Pagination = ({
           ) : (
             <LinkButton
               key={page}
+              as={as}
               href={hrefForPage(page)}
               aria-label={labels.page(page)}
               aria-current={page === currentPage ? "page" : undefined}
@@ -95,6 +105,7 @@ const Pagination = ({
           ),
         )}
         <LinkButton
+          as={currentPage < totalPages ? as : undefined}
           href={currentPage < totalPages ? hrefForPage(currentPage + 1) : undefined}
           aria-label={labels.next}
           aria-disabled={currentPage === totalPages}

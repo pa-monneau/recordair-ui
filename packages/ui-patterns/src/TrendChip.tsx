@@ -1,5 +1,5 @@
 import { ArrowDownIcon, ArrowRightIcon, ArrowUpIcon } from "@recordair/ui-core/icons";
-import { Badge } from "@recordair/ui-core";
+import { Badge, type BadgeTone } from "@recordair/ui-core";
 
 type TrendDirection = "up" | "down" | "neutral";
 
@@ -7,9 +7,14 @@ type TrendChipProps = {
   direction: TrendDirection;
   value: string;
   accessibleLabel?: string;
+  /**
+   * Surcharge le ton par défaut associé à `direction` (ex. une baisse jugée
+   * attendue/non critique peut rester en `warning` plutôt que `error`).
+   */
+  tone?: BadgeTone;
 };
 
-const tones: Record<TrendDirection, "success" | "error" | "neutral"> = {
+const defaultTones: Record<TrendDirection, "success" | "error" | "neutral"> = {
   up: "success",
   down: "error",
   neutral: "neutral",
@@ -25,13 +30,14 @@ const TrendChip = ({
   direction,
   value,
   accessibleLabel,
+  tone,
 }: TrendChipProps) => {
   const Icon = directionIcons[direction];
 
   return (
     <Badge
       aria-label={accessibleLabel}
-      tone={tones[direction]}
+      tone={tone ?? defaultTones[direction]}
       icon={<Icon aria-hidden className="size-3" />}
     >
       {value}

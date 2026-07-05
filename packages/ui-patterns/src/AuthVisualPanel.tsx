@@ -1,3 +1,4 @@
+import type { ElementType } from "react";
 import { Avatar, RatingStars } from "@recordair/ui-core";
 import { RecordairLogo } from "./RecordairLogo";
 
@@ -13,6 +14,8 @@ type AuthVisualPanelProps = {
   tagline: string;
   testimonial?: AuthTestimonial;
   logoHref?: string;
+  /** Composant de lien du logo (ex. le `Link` localisé d'un routeur applicatif). */
+  logoAs?: ElementType;
 };
 
 const AuthVisualPanel = ({
@@ -20,6 +23,7 @@ const AuthVisualPanel = ({
   tagline,
   testimonial,
   logoHref,
+  logoAs,
 }: AuthVisualPanelProps) => (
   <aside className="relative hidden h-screen w-[var(--size-auth-panel)] shrink-0 overflow-hidden bg-auth p-16 lg:flex lg:flex-col lg:justify-between">
     <span
@@ -27,7 +31,7 @@ const AuthVisualPanel = ({
       className="pointer-events-none absolute left-[var(--size-auth-halo-x)] top-[var(--size-auth-halo-y)] size-[var(--size-auth-halo)] rounded-full bg-auth-halo"
     />
     <div className="relative">
-      <RecordairLogo href={logoHref} size="md" inverted />
+      <RecordairLogo as={logoAs} href={logoHref} size="md" inverted />
     </div>
     <div className="relative flex flex-col gap-6">
       <h1 className="text-auth-heading font-bold leading-auth-heading tracking-auth-heading text-neutral-0">

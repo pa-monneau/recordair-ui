@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from "./icons";
+import { CalendarDaysIcon, ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from "./icons";
 import { classNames } from "./classNames";
 
 type Cell = { day: number; iso: string } | null;
@@ -168,7 +168,19 @@ const DatePicker = ({
         onClick={() => setOpen((o) => !o)}
         className={className}
       >
-        {displayValue || <span className="text-neutral-500">{placeholder}</span>}
+        <span className="flex w-full items-center gap-2">
+          <CalendarDaysIcon aria-hidden className="size-4 shrink-0 text-neutral-500" />
+          <span className="flex-1 truncate text-left">
+            {displayValue || <span className="text-neutral-500">{placeholder}</span>}
+          </span>
+          <ChevronDownIcon
+            aria-hidden
+            className={classNames(
+              "size-4 shrink-0 text-neutral-500 transition-transform",
+              open && "rotate-180",
+            )}
+          />
+        </span>
       </button>
       {open && (
         <div

@@ -32,6 +32,8 @@ export { ChoiceChip } from "./ChoiceChip";
 export type { ChoiceChipProps } from "./ChoiceChip";
 export { ContentBlock } from "./ContentBlock";
 export type { ContentBlockData, ContentBlockProps } from "./ContentBlock";
+export { DatePicker } from "./DatePicker";
+export type { DatePickerProps } from "./DatePicker";
 export { Divider } from "./Divider";
 export type { DividerProps } from "./Divider";
 export { EmptyState } from "./EmptyState";

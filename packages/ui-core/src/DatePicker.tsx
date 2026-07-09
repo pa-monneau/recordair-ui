@@ -55,6 +55,12 @@ type DatePickerProps = {
   nextLabel?: string;
   /** Classe du bouton déclencheur (le calendrier ouvert n'est pas stylable). */
   className?: string;
+  /**
+   * `"popover"` (défaut) : bouton déclencheur + calendrier flottant.
+   * `"inline"` : grille toujours visible, pleine largeur, sans bouton ni
+   * cadre propre (à intégrer dans un conteneur existant, ex. une Card).
+   */
+  mode?: "popover" | "inline";
 };
 
 /**
@@ -78,6 +84,7 @@ const DatePicker = ({
   prevLabel = "Précédent",
   nextLabel = "Suivant",
   className,
+  mode = "popover",
 }: DatePickerProps) => {
   const boxRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -156,6 +163,73 @@ const DatePicker = ({
 
   const cells = buildMonthGrid(viewYear, viewMonth);
 
+  const panel = (
+    <>
+      <div className="mb-3 flex items-center justify-between">
+        <button
+          type="button"
+          onClick={() => goToMonth(-1)}
+          disabled={viewKey <= minKey}
+          aria-label={prevLabel}
+          className="grid size-8 place-items-center rounded-full text-neutral-700 transition hover:bg-neutral-100 disabled:pointer-events-none disabled:opacity-30"
+        >
+          <ChevronLeftIcon className="size-4" />
+        </button>
+        <p className="text-sm font-semibold text-neutral-900">{monthLabel}</p>
+        <button
+          type="button"
+          onClick={() => goToMonth(1)}
+          disabled={viewKey >= maxKey}
+          aria-label={nextLabel}
+          className="grid size-8 place-items-center rounded-full text-neutral-700 transition hover:bg-neutral-100 disabled:pointer-events-none disabled:opacity-30"
+        >
+          <ChevronRightIcon className="size-4" />
+        </button>
+      </div>
+
+      <div className="grid grid-cols-7 gap-y-1 text-center">
+        {weekdayLabels.map((w, i) => (
+          <span key={`${w}-${i}`} className="py-1 text-xs font-medium text-neutral-500">
+            {w}
+          </span>
+        ))}
+        {cells.map((cell, i) => {
+          if (!cell) return <span key={`empty-${i}`} />;
+          const disabled =
+            cell.iso < min || cell.iso > max || Boolean(isDateDisabled?.(cell.iso));
+          const selected = cell.iso === current;
+          return (
+            <button
+              key={cell.iso}
+              type="button"
+              disabled={disabled}
+              onClick={() => chooseDay(cell.iso)}
+              className={classNames(
+                "mx-auto grid size-9 place-items-center rounded-full text-sm transition",
+                selected
+                  ? "bg-brand-primary font-semibold text-neutral-0"
+                  : disabled
+                    ? "text-neutral-300"
+                    : "text-neutral-900 hover:bg-neutral-100",
+              )}
+            >
+              {cell.day}
+            </button>
+          );
+        })}
+      </div>
+    </>
+  );
+
+  if (mode === "inline") {
+    return (
+      <div className="w-full">
+        {name ? <input type="hidden" name={name} value={current} /> : null}
+        {panel}
+      </div>
+    );
+  }
+
   return (
     <div ref={boxRef} className="relative w-full">
       {name ? <input type="hidden" name={name} value={current} /> : null}
@@ -188,59 +262,7 @@ const DatePicker = ({
           aria-label={label}
           className="absolute left-0 top-full z-30 mt-2 w-[320px] overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-0 p-4 shadow-elevated"
         >
-          <div className="mb-3 flex items-center justify-between">
-            <button
-              type="button"
-              onClick={() => goToMonth(-1)}
-              disabled={viewKey <= minKey}
-              aria-label={prevLabel}
-              className="grid size-8 place-items-center rounded-full text-neutral-700 transition hover:bg-neutral-100 disabled:pointer-events-none disabled:opacity-30"
-            >
-              <ChevronLeftIcon className="size-4" />
-            </button>
-            <p className="text-sm font-semibold text-neutral-900">{monthLabel}</p>
-            <button
-              type="button"
-              onClick={() => goToMonth(1)}
-              disabled={viewKey >= maxKey}
-              aria-label={nextLabel}
-              className="grid size-8 place-items-center rounded-full text-neutral-700 transition hover:bg-neutral-100 disabled:pointer-events-none disabled:opacity-30"
-            >
-              <ChevronRightIcon className="size-4" />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-7 gap-y-1 text-center">
-            {weekdayLabels.map((w, i) => (
-              <span key={`${w}-${i}`} className="py-1 text-xs font-medium text-neutral-500">
-                {w}
-              </span>
-            ))}
-            {cells.map((cell, i) => {
-              if (!cell) return <span key={`empty-${i}`} />;
-              const disabled =
-                cell.iso < min || cell.iso > max || Boolean(isDateDisabled?.(cell.iso));
-              const selected = cell.iso === current;
-              return (
-                <button
-                  key={cell.iso}
-                  type="button"
-                  disabled={disabled}
-                  onClick={() => chooseDay(cell.iso)}
-                  className={classNames(
-                    "mx-auto grid size-9 place-items-center rounded-full text-sm transition",
-                    selected
-                      ? "bg-brand-primary font-semibold text-neutral-0"
-                      : disabled
-                        ? "text-neutral-300"
-                        : "text-neutral-900 hover:bg-neutral-100",
-                  )}
-                >
-                  {cell.day}
-                </button>
-              );
-            })}
-          </div>
+          {panel}
         </div>
       )}
     </div>
